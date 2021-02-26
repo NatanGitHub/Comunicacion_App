@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "51306204225",
+    "project_id": "comunicacion-app",
+    "storage_bucket": "comunicacion-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51306204225:android:d46dcacb6afb86aede8ac0",
+        "android_client_info": {
+          "package_name": "com.bsav157.comunicacion_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51306204225-1o77ei9avt8ueob01o7n2633u9024tmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlygFDJBEfE-nkR6t5TmGqXmTa3KIJxkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51306204225-1o77ei9avt8ueob01o7n2633u9024tmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

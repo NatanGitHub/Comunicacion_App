@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Comunicacion_App</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registro_usuario">Registro de Usuario</string>
+    <string name="registror">Registrar</string>
+    <string name="registrorse">Registrarme</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="ingresar_correo">Ingrese el Correo</string>
+    <string name="ingrese_contraseña">Ingrese la contraseña</string>
+    <string name="confirme_contraseña">Confirme la contraseña</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.bsav157.comunicacion_app.fragmentos;
 
+import android.graphics.Point;
 import android.net.nsd.NsdManager;
 import android.os.Bundle;
 
@@ -7,9 +8,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,8 +24,8 @@ import com.bsav157.comunicacion_app.R;
 
 public class Registro extends DialogFragment implements RegistroListener {
 
-    EditText texto;
-    Button boton;
+    EditText correo, clave;
+    Button registrar, cancelar;
 
     public Registro() {
         // Required empty public constructor
@@ -47,24 +51,50 @@ public class Registro extends DialogFragment implements RegistroListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Fetch arguments from bundle and set title
-        String title = getArguments().getString("Titulo", "Enter Name");
+        String title = getArguments().getString("Titulo", "Registro");
         getDialog().setTitle(title);
-        texto = view.findViewById(R.id.texto);
-        boton = view.findViewById(R.id.boton);
-        boton.setOnClickListener(new View.OnClickListener() {
+        onResume();
+        initItems(view);
+
+    }
+
+    public void onResume() {
+        Window window = getDialog().getWindow();
+        Point size = new Point();
+        Display display = window.getWindowManager().getDefaultDisplay();
+        display.getSize(size);
+        window.setLayout((int) (size.x * 0.93), WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setGravity(Gravity.CENTER);
+        super.onResume();
+    }
+
+    public void initItems(View vista){
+
+        correo = vista.findViewById(R.id.correo);
+        clave = vista.findViewById(R.id.clave);
+        registrar = vista.findViewById(R.id.boton);
+        cancelar = vista.findViewById(R.id.cancelar);
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RegistroListener listener = (RegistroListener) getActivity();
-                listener.onFinishRegistroDialog(texto.getText().toString());
                 dismiss();
             }
         });
 
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegistroListener listener = (RegistroListener) getActivity();
+                listener.onFinishRegistroDialog(correo.getText().toString().trim(), clave.getText().toString().trim());
+                dismiss();
+            }
+        });
 
     }
 
     @Override
-    public void onFinishRegistroDialog(String texto) {
+    public void onFinishRegistroDialog(String correo, String Clave) {
         
     }
 }
