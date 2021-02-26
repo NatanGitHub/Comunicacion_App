@@ -1,5 +1,6 @@
 package com.bsav157.comunicacion_app.fragmentos;
 
+import android.net.nsd.NsdManager;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,11 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bsav157.comunicacion_app.Interfaces.RegistroListener;
 import com.bsav157.comunicacion_app.R;
 
-public class Registro extends DialogFragment {
+public class Registro extends DialogFragment implements RegistroListener {
+
+    EditText texto;
+    Button boton;
 
     public Registro() {
         // Required empty public constructor
@@ -42,6 +49,22 @@ public class Registro extends DialogFragment {
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("Titulo", "Enter Name");
         getDialog().setTitle(title);
+        texto = view.findViewById(R.id.texto);
+        boton = view.findViewById(R.id.boton);
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegistroListener listener = (RegistroListener) getActivity();
+                listener.onFinishRegistroDialog(texto.getText().toString());
+                dismiss();
+            }
+        });
+
+
     }
 
+    @Override
+    public void onFinishRegistroDialog(String texto) {
+        
+    }
 }

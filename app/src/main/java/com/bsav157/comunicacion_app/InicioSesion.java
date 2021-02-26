@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.bsav157.comunicacion_app.Interfaces.RegistroListener;
 import com.bsav157.comunicacion_app.fragmentos.Registro;
 
-public class InicioSesion extends AppCompatActivity {
+public class InicioSesion extends AppCompatActivity implements RegistroListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,4 +28,8 @@ public class InicioSesion extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onFinishRegistroDialog(String texto) {
+        Toast.makeText(this, texto, Toast.LENGTH_SHORT).show();
+    }
 }
