@@ -1,13 +1,9 @@
 package com.bsav157.comunicacion_app.fragmentos;
 
 import android.graphics.Point;
-import android.net.nsd.NsdManager;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,14 +13,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import com.bsav157.comunicacion_app.Interfaces.RegistroListener;
 import com.bsav157.comunicacion_app.R;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Registro extends DialogFragment implements RegistroListener {
 
-    EditText correo, clave;
+    EditText correo, clave, confirmaClave;
     Button registrar, cancelar;
 
     public Registro() {
@@ -72,6 +69,7 @@ public class Registro extends DialogFragment implements RegistroListener {
 
         correo = vista.findViewById(R.id.correo);
         clave = vista.findViewById(R.id.clave);
+        confirmaClave = vista.findViewById(R.id.valide_clave);
         registrar = vista.findViewById(R.id.boton);
         cancelar = vista.findViewById(R.id.cancelar);
 
@@ -85,13 +83,54 @@ public class Registro extends DialogFragment implements RegistroListener {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if( correo.getText().toString().isEmpty() ){
+                    correo.setError("Introduzca un correo");
+                    return;
+                }
+
+                if (!correoValido(correo.getText().toString().trim())) {
+                    correo.setError("Formato de correo invalido");
+                    return;
+                }
+
+                if( clave.getText().toString().trim().length() < 5 ){
+                    clave.setError("La contraseña es muy corta");
+                    return;
+                }
+
+                if( clave.getText().toString().isEmpty() || confirmaClave.getText().toString().isEmpty() ){
+                    clave.setError("Rellene ambos campos");
+                    confirmaClave.setError("Rellene ambos campos");
+                    return;
+                }
+
+
                 RegistroListener listener = (RegistroListener) getActivity();
                 listener.onFinishRegistroDialog(correo.getText().toString().trim(), clave.getText().toString().trim());
                 dismiss();
+
             }
         });
 
     }
+
+    public boolean correoValido(String correo){
+
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher mather = pattern.matcher(correo);
+
+        if (!mather.find()) {
+            return false;
+        }
+
+        return true;
+
+    }
+
 
     @Override
     public void onFinishRegistroDialog(String correo, String Clave) {
