@@ -9,4 +9,18 @@
     <string name="ingresar_correo">Ingrese el Correo</string>
     <string name="ingrese_contraseña">Ingrese la contraseña</string>
     <string name="confirme_contraseña">Confirme la contraseña</string>
+    <string name="title_activity_ejemplo">ejemplo</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Tienda de Productos</string>
+    <string name="nav_header_subtitle">Lo mejor en Tecnologia</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+
+    <!-- El menu deslizable -->
+    <string name="menu_celulares">Celulares</string>
+    <string name="menu_equipos_sonido">Equipos de Sonido</string>
+    <string name="menu_accesorios">Accesorios</string>
+    <string name="title_activity_vistad_usuarios">VistaUsuarios</string>
+    <string name="action_settings">Opciones</string>
 </resources>
