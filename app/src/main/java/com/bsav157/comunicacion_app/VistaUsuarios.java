@@ -1,5 +1,7 @@
 package com.bsav157.comunicacion_app;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -12,6 +14,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -54,6 +58,32 @@ public class VistaUsuarios extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Advertencia");
+        builder.setMessage("¿Desea salir de la Aplicacion?");
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(VistaUsuarios.this, "No se cerrara la ventana", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        //ejecuta super.onBackPressed() para que finalice el metodo cerrando el activity
+        //super.onBackPressed();
+    }
+
     public void initItems(){
 
         mAuth = FirebaseAuth.getInstance();
@@ -62,10 +92,8 @@ public class VistaUsuarios extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_gallery, R.id.nav_home, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -113,12 +141,6 @@ public class VistaUsuarios extends AppCompatActivity {
 
             }
         });
-    }
-
-    public void mostrar(View vista){
-
-        Toast.makeText(this, productos.get(0).getNombre(), Toast.LENGTH_LONG).show();
-
     }
 
 }

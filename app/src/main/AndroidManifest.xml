@@ -10,15 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Comunicacion_App">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".VistaUsuarios"
             android:label="@string/title_activity_vistad_usuarios"
-            android:theme="@style/Theme.Comunicacion_App.NoActionBar"></activity>
-        <activity
-            android:name=".ejemplo"
-            android:label="@string/title_activity_ejemplo"
-            android:theme="@style/Theme.Comunicacion_App.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".VistaAdmin" />
         <activity android:name=".InicioSesion">
             <intent-filter>

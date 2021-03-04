@@ -2,9 +2,15 @@ package com.bsav157.comunicacion_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
+
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.ornach.nobobutton.NoboButton;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,10 +33,13 @@ import java.util.regex.Pattern;
 public class InicioSesion extends AppCompatActivity implements RegistroListener {
 
     EditText campoCorreo, campoClave;
-    Button ingresar;
+    NoboButton ingresar;
     TextView registrar;
     ProgressDialog proceso;
+    Context context = this;
     private FirebaseAuth mAuth;
+    SharedPreferences sharedpreferences;
+    String mypreference = "mypref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,39 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
         setContentView(R.layout.inicio_sesion);
 
         initItems();
+        rellenarDatosSesion();
+        validaPermisos();
+
+    }
+
+    public void guardarDatosSesion(String correo, String clave) {
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("correo", correo);
+        editor.putString("clave", clave);
+        editor.commit();
+    }
+
+    public void rellenarDatosSesion() {
+        sharedpreferences = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+
+        if (sharedpreferences.contains("correo")) {
+            campoCorreo.setText(sharedpreferences.getString("correo", ""));
+        }
+        if (sharedpreferences.contains("clave")) {
+            campoClave.setText(sharedpreferences.getString("clave", ""));
+        }
+    }
+
+    public void validaPermisos(){
+
+        // La App esta en ejecución
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.INTERNET)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            Toast.makeText(this, "El permiso de Internet no ha sido otorgado", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -89,6 +132,9 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+
+                                    guardarDatosSesion(campoCorreo.getText().toString().trim(), campoClave.getText().toString().trim());
+
                                     FirebaseUser user = mAuth.getCurrentUser();
 
                                     Intent pantalla;
@@ -99,15 +145,19 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
                                         pantalla = new Intent(InicioSesion.this, VistaUsuarios.class);
                                     }
                                     startActivity(pantalla);
+                                    finish();
 
                                 } else {
                                     Toast.makeText(InicioSesion.this, "No se pudo iniciar sesion", Toast.LENGTH_SHORT).show();
+                                    proceso.dismiss();
+                                    return;
                                 }
                                 proceso.dismiss();
                             }
                         });
 
             }
+
         });
 
     }

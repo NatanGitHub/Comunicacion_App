@@ -47,31 +47,45 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="40dp"
             android:hint="@string/ingresar_correo"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <com.txusballesteros.PasswordEditText
             android:id="@+id/campo_clave"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="40dp"
-            android:hint="@string/ingrese_contraseña"
+            android:drawableTint="#1542E6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/campo_correo" />
 
-        <Button
+        <com.ornach.nobobutton.NoboButton
             android:id="@+id/ingresar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="@string/ingresar"
+            android:padding="11dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/campo_clave" />
+            app:layout_constraintTop_toBottomOf="@+id/campo_clave"
+            app:nb_backgroundColor="#22B9C6"
+            app:nb_borderColor="#FFFFFF"
+            app:nb_borderWidth="2dp"
+            app:nb_drawableResource="@drawable/ic_login_black_24dp"
+            app:nb_focusColor="#B83CC3"
+            app:nb_iconPosition="right"
+            app:nb_radius="5dp"
+            app:nb_text="INGRESAR  "
+            app:nb_textColor="#FFF"
+            app:nb_textSize="15dp"
+            app:nb_textStyle="bold" />
 
         <TextView
             android:id="@+id/registrar"
@@ -85,6 +99,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingresar" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

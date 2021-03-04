@@ -1,26 +1,32 @@
 
 J
-java:S16044"(Make this anonymous inner class a lambda(Ò†êøÿÿÿÿ8ÌÀåıı.
-O
-java:S1874]"2Remove this use of "setMessage"; it is deprecated.(ëØ“­8ú¿ë€ş.
-O
-java:S1128	"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8µÅü€ş.
+java:S1604`"(Make this anonymous inner class a lambda(Ò†êøÿÿÿÿ8õË‡Îÿ.
 J
-java:S1604H"(Make this anonymous inner class a lambda(ªÆƒ¬şÿÿÿÿ8ñÂş€ş.
-J
-java:S1659"(Declare "campoClave" on a separate line.(«Àˆúûÿÿÿÿ8‰œŞıı.
-X
-java:S18742"6Remove this use of "ProgressDialog"; it is deprecated.(Ö¿®üÿÿÿÿ8øŞíşı.
+java:S1659#"(Declare "campoClave" on a separate line.(«Àˆúûÿÿÿÿ8ö°·îÿ.
+T
+java:S1128"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8ì¤¼ğÿ.
+R
+java:S2209Y"5Change this instance-reference to a static reference.(ìøç®8õË‡Îÿ.
+h
+java:S1192:"FDefine a constant instead of duplicating this literal "clave" 3 times.(Ëî²úÿÿÿÿ8Ó„Çëÿ.
+K
+java:S1604½"(Make this anonymous inner class a lambda(¥íîŸÿÿÿÿÿ8õË‡Îÿ.
+_
+java:S1126­"AReplace this if-then-else statement by a single return statement.(´ÍÎ‹8õË‡Îÿ.
+d
+java:S11929"GDefine a constant instead of duplicating this literal "correo" 3 times.(¢ÚÙŞ8™¯Åëÿ.
 S
-java:S1874"6Remove this use of "ProgressDialog"; it is deprecated.(´•‡Ñ8ûëşı.
-N
-java:S1874A"2Remove this use of "setMessage"; it is deprecated.(½®¨@8„€†€ş.
-J
-java:S1604b"(Make this anonymous inner class a lambda(¥íîŸÿÿÿÿÿ8ú¿ë€ş.
-R
-java:S2209E"5Change this instance-reference to a static reference.(ìøç®8çİüÿı.
+java:S1874&"6Remove this use of "ProgressDialog"; it is deprecated.(´•‡Ñ8õË‡Îÿ.
+X
+java:S1874^"6Remove this use of "ProgressDialog"; it is deprecated.(Ö¿®üÿÿÿÿ8õË‡Îÿ.
 E
-java:S1604="(Make this anonymous inner class a lambda(”€›’8ÚŠŒ‚ş.
-X	java:S110"<This class has 9 parents which is greater than 5 authorized.(óÊ½8Àäú÷ı.
-R
-java:S2209-"5Change this instance-reference to a static reference.(ìøç®8çä‚ş.
+java:S1604i"(Make this anonymous inner class a lambda(”€›’8õË‡Îÿ.
+S
+java:S2209€"5Change this instance-reference to a static reference.(ìøç®8õË‡Îÿ.
+N
+java:S1874|"2Remove this use of "setMessage"; it is deprecated.(½®¨@8õË‡Îÿ.
+P
+java:S1874¸"2Remove this use of "setMessage"; it is deprecated.(ëØ“­8õË‡Îÿ.
+K
+java:S1604ƒ"(Make this anonymous inner class a lambda(ªÆƒ¬şÿÿÿÿ8õË‡Îÿ.
+X	java:S110!"<This class has 9 parents which is greater than 5 authorized.(óÊ½8õË‡Îÿ.
