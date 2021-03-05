@@ -139,7 +139,7 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
 
                                     Intent pantalla;
 
-                                    if(user.getEmail().equals("admin@gmail.com")){
+                                    if(user.getEmail().equals("alejo@gmail.com")){
                                         pantalla = new Intent(InicioSesion.this, VistaAdmin.class);
                                     }else{
                                         pantalla = new Intent(InicioSesion.this, VistaUsuarios.class);

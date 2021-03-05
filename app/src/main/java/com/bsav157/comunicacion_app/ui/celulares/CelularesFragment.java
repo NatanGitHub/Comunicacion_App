@@ -70,7 +70,7 @@ public class CelularesFragment extends Fragment {
 
         referenciaBD = FirebaseDatabase.getInstance().getReference();
 
-        referenciaBD.child("celulares").addValueEventListener(new ValueEventListener() {
+        referenciaBD.child("zapatos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 

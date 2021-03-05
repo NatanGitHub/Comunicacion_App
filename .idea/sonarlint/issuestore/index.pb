@@ -19,3 +19,5 @@ Rapp/src/main/java/com/bsav157/comunicacion_app/ui/celulares/CelularesFragment.j
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 s
 Capp/src/main/java/com/bsav157/comunicacion_app/AdapterRecycler.java,6\3\632adb402d4f41fe97a81aa24878acb2177dbde9
+n
+>app/src/main/java/com/bsav157/comunicacion_app/VistaAdmin.java,5\8\58ec3add05eb66a90dcdc45358d397d432dd85d7

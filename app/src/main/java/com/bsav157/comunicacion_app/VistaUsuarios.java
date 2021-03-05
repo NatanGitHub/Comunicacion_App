@@ -109,13 +109,13 @@ public class VistaUsuarios extends AppCompatActivity {
     }
 
     public void descargarCelulares() {
-        referenciaBD.child("celulares").addValueEventListener(new ValueEventListener() {
+        referenciaBD.child("zapatos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for( DataSnapshot snapshot :  dataSnapshot.getChildren()){
 
-                    referenciaBD.child("celulares").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                    referenciaBD.child("zapatos").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 

@@ -2,20 +2,13 @@ package com.bsav157.comunicacion_app;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -52,7 +45,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
             holder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dialogEspera(datos.get(position));
+                    dialogCaracteristicas(datos.get(position));
                 }
             });
             holder.bindData(datos.get(position));
@@ -90,7 +83,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
             }
         }
 
-    public void dialogEspera(Productos item){
+    public void dialogCaracteristicas(Productos item){
 
         Dialog dialogPersonalizado = new Dialog(context);
         dialogPersonalizado.setContentView(R.layout.caracteristicas_producto);
