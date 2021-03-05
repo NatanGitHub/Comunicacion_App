@@ -1,27 +1,13 @@
 
-l	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¶8´å™ÿ.
-m	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¦Ì8´å™ÿ.
 E
-java:S16044"(Make this anonymous inner class a lambda(ğìñ8öáÛ£ÿ.
-Z
-java:S1128"8Remove this unused import 'androidx.lifecycle.LiveData'.(ß„İŞşÿÿÿÿ8ÀªÍ˜ÿ.
-[
-java:S1128"9Remove this unused import 'androidx.lifecycle.ViewModel'.(ÛÒÚ“úÿÿÿÿ8´å™ÿ.
-L
-java:S1128"/Remove this unused import 'android.os.Handler'.(ûÛ’¡8¯Ñî¢ÿ.
-R
-java:S2209-"5Change this instance-reference to a static reference.(ÀÚÀ8…‡ë™ÿ.
-I
-java:S1659B",Declare "precioProducto" on a separate line.(’òÔâ8¤Õı ÿ.
-a
-java:S1128"?Remove this unused import 'androidx.lifecycle.MutableLiveData'.(Íèæâıÿÿÿÿ8ÔóÍ˜ÿ.
-U
-java:S1128"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ8â¥í™ÿ.
-Q
-java:S1128	"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8‚´÷£ÿ.
-S
-java:S1128"1Remove this unused import 'android.widget.Toast'.(©›ïÍúÿÿÿÿ8´©ò¢ÿ.
+java:S1604-"(Make this anonymous inner class a lambda(ğìñ8öáÛ£ÿ.
 
-java:S1319="pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ¯8¥¥”šÿ.
+java:S13196"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ¯8¥¥”šÿ.
+R
+java:S2209&"5Change this instance-reference to a static reference.(ÀÚÀ8…‡ë™ÿ.
+m	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¦Ì8´å™ÿ.
 ‘
-java:S1319"oThe type of the "item" object should be an interface such as "List" rather than the implementation "ArrayList".(İ–Ì¤ıÿÿÿÿ8«»ô™ÿ.
+java:S1319"oThe type of the "item" object should be an interface such as "List" rather than the implementation "ArrayList".(İ–Ì¤ıÿÿÿÿ8«»ô™ÿ.
+l	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¶8´å™ÿ.
+I
+java:S1659;",Declare "precioProducto" on a separate line.(’òÔâ8¤Õı ÿ.

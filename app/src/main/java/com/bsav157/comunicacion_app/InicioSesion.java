@@ -142,7 +142,7 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
                                     if(user.getEmail().equals("alejo@gmail.com")){
                                         pantalla = new Intent(InicioSesion.this, VistaAdmin.class);
                                     }else{
-                                        pantalla = new Intent(InicioSesion.this, VistaUsuarios.class);
+                                        pantalla = new Intent(InicioSesion.this, Usuarios.class);
                                     }
                                     startActivity(pantalla);
                                     finish();
@@ -191,7 +191,7 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent pantalla = new Intent(InicioSesion.this, VistaUsuarios.class);
+                            Intent pantalla = new Intent(InicioSesion.this, Usuarios.class);
                             startActivity(pantalla);
                         } else {
                             // Si el usuario ya ha sido creado .......

@@ -1,34 +1,46 @@
 package com.bsav157.comunicacion_app;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bsav157.comunicacion_app.fragmentos.AdminVerProductos;
+import com.bsav157.comunicacion_app.fragmentos.Registro;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ornach.nobobutton.NoboButton;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class VistaAdmin extends AppCompatActivity {
@@ -40,6 +52,7 @@ public class VistaAdmin extends AppCompatActivity {
     private StorageReference storageReference;
     private static final int GALLERY_INTENT = 1;
     Context context = this;
+    private ArrayList<Productos> productos = new ArrayList<>();
     Uri uri;
 
     @Override
@@ -67,6 +80,65 @@ public class VistaAdmin extends AppCompatActivity {
             }
         });
 
+        verProductos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Dialog dialogPersonalizado = new Dialog(context);
+                dialogPersonalizado.setContentView(R.layout.layout_cargando);
+                dialogPersonalizado.setCancelable(false);
+
+                // Después mostrarla:
+                dialogPersonalizado.show();
+                productZapatos();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        FragmentManager fm = getSupportFragmentManager();
+                        AdminVerProductos adminVerProductos = AdminVerProductos.newInstance("Registro", productos);
+                        adminVerProductos.show(fm, "fragment_admin_ver_productos");
+                        dialogPersonalizado.dismiss();
+                    }
+                }, 3000);
+
+            }
+        });
+
+    }
+
+    public void productZapatos(){
+
+        referenciaBD = FirebaseDatabase.getInstance().getReference();
+
+        referenciaBD.child("zapatos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                productos.clear();
+
+                for( DataSnapshot datos :  snapshot.getChildren()){
+
+                    Productos p = new Productos();
+
+                    p.setNombre( datos.child("nombre").getValue().toString() );
+                    p.setDetalles( datos.child("descripcion").getValue().toString() );
+                    p.setPrecio( Long.parseLong(datos.child("precio").getValue().toString()) );
+                    p.setUrl( datos.child("url").getValue().toString() );
+                    p.setStock( Integer.parseInt(datos.child("stock").getValue().toString()) );
+
+                    productos.add(p);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
     }
 
     public void dialogCrearProducto(){
@@ -168,6 +240,31 @@ public class VistaAdmin extends AppCompatActivity {
         window.setLayout((int) (size.x * 0.94), WindowManager.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.CENTER);
         super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Advertencia");
+        builder.setMessage("¿Desea salir de la Aplicacion?");
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mAuth.signOut();
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {}
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        //ejecuta super.onBackPressed() para que finalice el metodo cerrando el activity
+        //super.onBackPressed();
     }
 
     @Override

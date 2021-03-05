@@ -1,6 +1,32 @@
 
-j
-java:S1450"TRemove the "mAuth" field and declare it as a local variable in the relevant methods.(ªÐ”’
-Q	java:S110"<This class has 9 parents which is greater than 5 authorized.(§ý¦Ù
+T
+java:S1128"2Remove this unused import 'android.widget.Button'.(²òžýÿÿÿÿ8‡ñ¤”€/
+K
+java:S1604Š"(Make this anonymous inner class a lambda(ŸÈþ°ýÿÿÿÿ8”ÂÒ˜€/
+E
+java:S1604?"(Make this anonymous inner class a lambda(îê›8Ê¦ä”€/
 n
-java:S1450"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àŽûÿÿÿÿ
+java:S1450%"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àŽûÿÿÿÿ
+j
+java:S1450$"TRemove the "mAuth" field and declare it as a local variable in the relevant methods.(ªÐ”’
+q
+java:S1192d"TDefine a constant instead of duplicating this literal "Rellenar este Campo" 4 times.(ŽÆÒÓ8¼—ã”€/
+J
+java:S1068%"(Remove this unused "user" private field.(š·àŽûÿÿÿÿ8 Öì”€/
+`
+java:S2259´"BA "NullPointerException" could be thrown; "data" is nullable here.(ÇŸ÷8ô¥õ–€/
+Q	java:S110""<This class has 9 parents which is greater than 5 authorized.(§ý¦Ù
+E
+java:S1604T"(Make this anonymous inner class a lambda(Ò¹««8Â¶÷•€/
+L
+java:S1659'"*Declare "verProductos" on a separate line.(ïŽ—üÿÿÿÿ8Ô Þ”€/
+R
+java:S1874§"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8•Ÿ•€/
+J
+java:S1604_"(Make this anonymous inner class a lambda(É€òƒÿÿÿÿÿ8¼—ã”€/
+W
+java:S1874¦"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî8‘ê¦•€/
+s
+java:S3252¨"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(šÕÏÉúÿÿÿÿ8‘ê¦•€/
+K
+java:S1604€"(Make this anonymous inner class a lambda(Èþ çúÿÿÿÿ8†ÕÀ—€/

@@ -1,22 +1,22 @@
 
-q
-java:S1450 "TRemove the "mAuth" field and declare it as a local variable in the relevant methods.(ªÐ”’8ûÀû¥þ.
-Q	java:S110"<This class has 9 parents which is greater than 5 authorized.(ó•ˆÐ
+Ÿ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô°¤¦8õ¥Š¦þ.
+J
+java:S1068!"(Remove this unused "user" private field.(š·àŽûÿÿÿÿ8œ¸ú¥þ.
 E
 java:S1604C"(Make this anonymous inner class a lambda(óÔÃ˜8õÐÕÍÿ.
+Q	java:S110"<This class has 9 parents which is greater than 5 authorized.(ó•ˆÐ
+f
+java:S1128"DRemove this unused import 'androidx.activity.OnBackPressedCallback'.(‡­ë£þÿÿÿÿ8ñ‚¿Íÿ.
+q
+java:S1450 "TRemove the "mAuth" field and declare it as a local variable in the relevant methods.(ªÐ”’8ûÀû¥þ.
+u
+java:S1450!"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àŽûÿÿÿÿ8ûÀû¥þ.
+T
+java:S1874a"7Remove this use of "setDrawerLayout"; it is deprecated.(¼ëÇ›8õ¥Š¦þ.
 E
 java:S1604I"(Make this anonymous inner class a lambda(„¬Ý™8õÐÕÍÿ.
 P
 java:S1128".Remove this unused import 'android.view.View'.(Ø½­äþÿÿÿÿ8»°Ãîÿ.
-T
-java:S1874a"7Remove this use of "setDrawerLayout"; it is deprecated.(¼ëÇ›8õ¥Š¦þ.
-u
-java:S1450!"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àŽûÿÿÿÿ8ûÀû¥þ.
-J
-java:S1068!"(Remove this unused "user" private field.(š·àŽûÿÿÿÿ8œ¸ú¥þ.
-Ÿ
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô°¤¦8õ¥Š¦þ.
-f
-java:S1128"DRemove this unused import 'androidx.activity.OnBackPressedCallback'.(‡­ë£þÿÿÿÿ8ñ‚¿Íÿ.
 Ÿ
 java:S1186Œ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô°¤¦8õ¥Š¦þ.

@@ -11,10 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".VistaUsuarios"
-            android:label="@string/title_activity_vistad_usuarios"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".Usuarios"></activity>
         <activity android:name=".VistaAdmin" />
         <activity android:name=".InicioSesion">
             <intent-filter>
