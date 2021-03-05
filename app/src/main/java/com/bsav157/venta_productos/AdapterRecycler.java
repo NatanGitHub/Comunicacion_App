@@ -1,10 +1,15 @@
-package com.bsav157.comunicacion_app;
+package com.bsav157.venta_productos;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Point;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -92,9 +97,19 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
         TextView detalles = dialogPersonalizado.findViewById(R.id.details_datos);
         detalles.setText( item.getDetalles() );
         nombre.setText( item.getNombre() );
+        onResume(dialogPersonalizado);
         // Después mostrarla:
         dialogPersonalizado.show();
 
+    }
+
+    public void onResume(Dialog dialog) {
+        Window window = dialog.getWindow();
+        Point size = new Point();
+        Display display = window.getWindowManager().getDefaultDisplay();
+        display.getSize(size);
+        window.setLayout((int) (size.x * 0.95), WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setGravity(Gravity.CENTER);
     }
 
     }

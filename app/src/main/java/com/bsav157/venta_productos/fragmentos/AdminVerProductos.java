@@ -1,45 +1,27 @@
-package com.bsav157.comunicacion_app.fragmentos;
+package com.bsav157.venta_productos.fragmentos;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.bsav157.comunicacion_app.AdapterRecycler;
-import com.bsav157.comunicacion_app.InicioSesion;
-import com.bsav157.comunicacion_app.Interfaces.RegistroListener;
-import com.bsav157.comunicacion_app.Productos;
-import com.bsav157.comunicacion_app.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.bsav157.venta_productos.AdapterRecycler;
+import com.bsav157.venta_productos.Interfaces.RegistroListener;
+import com.bsav157.venta_productos.Productos;
+import com.bsav157.venta_productos.R;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.ornach.nobobutton.NoboButton;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class AdminVerProductos extends DialogFragment implements RegistroListener {
 

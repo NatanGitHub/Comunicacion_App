@@ -1,4 +1,4 @@
-package com.bsav157.comunicacion_app.Interfaces;
+package com.bsav157.venta_productos.Interfaces;
 
 public interface RegistroListener {
 

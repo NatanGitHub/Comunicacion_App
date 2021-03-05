@@ -1,4 +1,4 @@
-package com.bsav157.comunicacion_app.fragmentos;
+package com.bsav157.venta_productos.fragmentos;
 
 import android.graphics.Point;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.bsav157.comunicacion_app.Interfaces.RegistroListener;
-import com.bsav157.comunicacion_app.R;
+import com.bsav157.venta_productos.Interfaces.RegistroListener;
+import com.bsav157.venta_productos.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

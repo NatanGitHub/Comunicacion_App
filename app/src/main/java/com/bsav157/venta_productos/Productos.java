@@ -1,4 +1,4 @@
-package com.bsav157.comunicacion_app;
+package com.bsav157.venta_productos;
 
 public class Productos {
 

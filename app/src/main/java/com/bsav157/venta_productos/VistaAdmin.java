@@ -1,11 +1,9 @@
-package com.bsav157.comunicacion_app;
+package com.bsav157.venta_productos;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -25,8 +23,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bsav157.comunicacion_app.fragmentos.AdminVerProductos;
-import com.bsav157.comunicacion_app.fragmentos.Registro;
+import com.bsav157.venta_productos.fragmentos.AdminVerProductos;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

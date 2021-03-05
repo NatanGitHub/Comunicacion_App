@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bsav157.comunicacion_app">
+    package="com.bsav157.venta_productos">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Usuarios"></activity>
-        <activity android:name=".VistaAdmin" />
-        <activity android:name=".InicioSesion">
+        <activity android:name="com.bsav157.venta_productos.Usuarios"></activity>
+        <activity android:name="com.bsav157.venta_productos.VistaAdmin" />
+        <activity android:name="com.bsav157.venta_productos.InicioSesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

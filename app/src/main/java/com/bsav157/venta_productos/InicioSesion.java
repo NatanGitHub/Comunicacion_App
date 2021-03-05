@@ -1,4 +1,4 @@
-package com.bsav157.comunicacion_app;
+package com.bsav157.venta_productos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +13,11 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.bsav157.comunicacion_app.Interfaces.RegistroListener;
-import com.bsav157.comunicacion_app.fragmentos.Registro;
+import com.bsav157.venta_productos.Interfaces.RegistroListener;
+import com.bsav157.venta_productos.fragmentos.Registro;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
