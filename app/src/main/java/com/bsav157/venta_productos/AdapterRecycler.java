@@ -12,11 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -164,7 +162,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
 
         }
 
-        detalles.setText( item.getDetalles() );
+        detalles.setText( item.getDescripcion() );
         nombre.setText( item.getNombre() );
         onResume(dialogPersonalizado);
         // Después mostrarla:

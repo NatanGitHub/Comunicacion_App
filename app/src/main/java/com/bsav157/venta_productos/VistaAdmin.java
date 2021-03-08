@@ -4,10 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,16 +13,16 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bsav157.venta_productos.fragmentos.AdminVerProductos;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +36,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ornach.nobobutton.NoboButton;
-
+import com.theartofdev.edmodo.cropper.CropImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,16 +46,16 @@ public class VistaAdmin extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference referenciaBD;
-    NoboButton crearProducto, verProductos;
+    private NoboButton crearProducto, verProductos;
     private StorageReference storageReference;
-    private static final int GALLERY_INTENT = 1;
-
-    int PICK_IMAGE = 100;
-    List<Uri> listaImagenes = new ArrayList<>();
-
-    Context context = this;
+    private int CAPTURAR_FOTO = 0;
+    private List<Uri> listaImagenes = new ArrayList<>();
+    private Context context = this;
     private ArrayList<Productos> productos = new ArrayList<>();
-    Uri uri;
+    private Extras extras = new Extras(this);
+    private LinearLayout linearLayout;
+    private TextView salir;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +74,27 @@ public class VistaAdmin extends AppCompatActivity {
 
         verProductos = findViewById(R.id.ver_productos);
         crearProducto = findViewById(R.id.crear_producto);
+        salir = findViewById(R.id.salir);
+
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         crearProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(!extras.isOnline()){
+                    Dialog verificarConexion = new Dialog(context);
+                    verificarConexion.setContentView(R.layout.mensaje_sin_internet);
+                    verificarConexion.show();
+                    return;
+                }
+
+                verProductos.setEnabled(false);
                 dialogCrearProducto();
             }
         });
@@ -87,6 +102,13 @@ public class VistaAdmin extends AppCompatActivity {
         verProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(!extras.isOnline()){
+                    Dialog verificarConexion = new Dialog(context);
+                    verificarConexion.setContentView(R.layout.mensaje_sin_internet);
+                    verificarConexion.show();
+                    return;
+                }
 
                 Dialog dialogPersonalizado = new Dialog(context);
                 dialogPersonalizado.setContentView(R.layout.layout_cargando);
@@ -125,8 +147,8 @@ public class VistaAdmin extends AppCompatActivity {
 
                     Productos p = new Productos();
 
+                    p.setDescripcion( datos.child("descripcion").getValue().toString() );
                     p.setNombre( datos.child("nombre").getValue().toString() );
-                    p.setDetalles( datos.child("descripcion").getValue().toString() );
                     p.setPrecio( Long.parseLong(datos.child("precio").getValue().toString()) );
                     p.setUrl( datos.child("url").getValue().toString() );
                     p.setFotos( Integer.parseInt(datos.child("fotos").getValue().toString()) );
@@ -150,13 +172,25 @@ public class VistaAdmin extends AppCompatActivity {
 
         Dialog dialogPersonalizado = new Dialog(this);
         dialogPersonalizado.setContentView(R.layout.nuevo_producto);
+        dialogPersonalizado.setCancelable(false);
 
+        linearLayout = dialogPersonalizado.findViewById(R.id.imagen_editada);
         EditText nombre = dialogPersonalizado.findViewById(R.id.nombre_producto);
         EditText detalles = dialogPersonalizado.findViewById(R.id.descripcion_producto);
         EditText precio = dialogPersonalizado.findViewById(R.id.precio_producto);
         EditText stock = dialogPersonalizado.findViewById(R.id.stock_producto);
         NoboButton imagen = dialogPersonalizado.findViewById(R.id.subir_imagen);
         NoboButton guardar = dialogPersonalizado.findViewById(R.id.guardar_producto);
+        TextView cancelar = dialogPersonalizado.findViewById(R.id.cancelar);
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listaImagenes.clear();
+                dialogPersonalizado.dismiss();
+                verProductos.setEnabled(true);
+            }
+        });
 
         imagen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,9 +198,8 @@ public class VistaAdmin extends AppCompatActivity {
 
                 Intent intent = new Intent();
                 intent.setType("image/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Seleccione Imagenes"), PICK_IMAGE);
+                startActivityForResult(Intent.createChooser(intent, "Seleccione Imagenes"), CAPTURAR_FOTO);
 
             }
         });
@@ -195,6 +228,11 @@ public class VistaAdmin extends AppCompatActivity {
                     return;
                 }
 
+                if(listaImagenes.size() < 1){
+                    Toast.makeText(context, "NO HA CARGADO NINGUNA IMAGEN", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Dialog dialogSubiendo = new Dialog(context);
                 dialogSubiendo.setContentView(R.layout.layout_cargando);
                 dialogSubiendo.setCancelable(false);
@@ -219,7 +257,6 @@ public class VistaAdmin extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     urlFotos[finalI] = uri.toString();
-                                    referenciaBD.child("zapatos").push().setValue(datosUsuario);
                                 }
                             });
                         }
@@ -233,7 +270,7 @@ public class VistaAdmin extends AppCompatActivity {
                     public void run() {
                         String urlFinal = "";
 
-                        if(urlFotos.length < 2){
+                        if(urlFotos.length == 1){
                             urlFinal = urlFotos[0];
                         }else{
 
@@ -252,12 +289,20 @@ public class VistaAdmin extends AppCompatActivity {
                         datosUsuario.put("url", urlFinal);
                         referenciaBD.child("zapatos").push().setValue(datosUsuario);
 
-                        dialogSubiendo.dismiss();
+                        listaImagenes.clear();
                         dialogPersonalizado.dismiss();
-                    }
-                }, 4000);
+                        dialogSubiendo.dismiss();
 
-                dialogPersonalizado.dismiss();
+                        // Le doy unos segundos de espera para poder ver productos
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                verProductos.setEnabled(true);
+                            }
+                        }, 3000);
+
+                    }
+                }, 5000);
 
             }
         });
@@ -308,26 +353,39 @@ public class VistaAdmin extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        ClipData clipData = data.getClipData();
         int i;
 
-        if( requestCode == PICK_IMAGE && resultCode == RESULT_OK ){
+        if( requestCode == CAPTURAR_FOTO && resultCode == RESULT_OK ){
 
-            // Si solo se selecciona una imagen
-            if(clipData == null){
+            uri = data.getData();
 
-                uri = data.getData();
-                listaImagenes.add(uri);
+            CropImage.activity(uri)
+                    .start(this);
 
-            }else {// Si se seleccionan mas de una imagen
+        }else if( requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK ){
 
-               for (i = 0; i < clipData.getItemCount(); i++){
-                   listaImagenes.add( clipData.getItemAt(i).getUri() );
-               }
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-                Toast.makeText(context, ""+listaImagenes.size(), Toast.LENGTH_SHORT).show();
+            if (resultCode == RESULT_OK) {
+
+                ImageView imageView = new ImageView(context);
+
+                imageView.setAdjustViewBounds(true);
+                imageView.setPadding(15, 0, 10, 0);
+                imageView.setImageURI(result.getUri());
+                imageView.setMinimumHeight(100);
+                linearLayout.addView(imageView);
+
+                listaImagenes.add(result.getUri());
+
+                //Uri resultUri = result.getUri();
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+
+                Toast.makeText(context, "No se cargo una imagen", Toast.LENGTH_SHORT).show();
 
             }
+
+            //Toast.makeText(context, "Imagen Editada", Toast.LENGTH_SHORT).show();
 
         }else{
             Toast.makeText(this, "No se pudo cargar la imagen", Toast.LENGTH_LONG).show();

@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -31,14 +32,15 @@ import java.util.regex.Pattern;
 
 public class InicioSesion extends AppCompatActivity implements RegistroListener {
 
-    EditText campoCorreo, campoClave;
-    NoboButton ingresar;
-    TextView registrar;
-    ProgressDialog proceso;
-    Context context = this;
+    private EditText campoCorreo, campoClave;
+    private NoboButton ingresar;
+    private TextView registrar;
+    private ProgressDialog proceso;
+    private Context context = this;
     private FirebaseAuth mAuth;
-    SharedPreferences sharedpreferences;
-    String mypreference = "mypref";
+    private SharedPreferences sharedpreferences;
+    private String mypreference = "mypref";
+    private Extras extras = new Extras(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,6 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
 
         initItems();
         rellenarDatosSesion();
-        validaPermisos();
 
     }
 
@@ -70,18 +71,6 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
         }
     }
 
-    public void validaPermisos(){
-
-        // La App esta en ejecución
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.INTERNET)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            Toast.makeText(this, "El permiso de Internet no ha sido otorgado", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
     public void initItems(){
 
         mAuth = FirebaseAuth.getInstance();
@@ -95,6 +84,14 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(!extras.isOnline()){
+                    Dialog verificarConexion = new Dialog(context);
+                    verificarConexion.setContentView(R.layout.mensaje_sin_internet);
+                    verificarConexion.show();
+                    return;
+                }
+
                 FragmentManager fm = getSupportFragmentManager();
                 Registro editNameDialogFragment = Registro.newInstance("Registro");
                 editNameDialogFragment.show(fm, "fragment_edit_name");
@@ -105,12 +102,19 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
             @Override
             public void onClick(View view) {
 
+                if(!extras.isOnline()){
+                    Dialog verificarConexion = new Dialog(context);
+                    verificarConexion.setContentView(R.layout.mensaje_sin_internet);
+                    verificarConexion.show();
+                    return;
+                }
+
                 if(campoCorreo.getText().toString().isEmpty()){
                     campoCorreo.setError("Introduzca su correo");
                     return;
                 }
 
-                if (!correoValido(campoCorreo.getText().toString().trim())) {
+                if (!extras.correoValido(campoCorreo.getText().toString().trim())) {
                     campoCorreo.setError("Formato de correo invalido");
                     return;
                 }
@@ -158,22 +162,6 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
             }
 
         });
-
-    }
-
-    public boolean correoValido(String correo){
-
-        Pattern pattern = Pattern
-                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-
-        Matcher mather = pattern.matcher(correo);
-
-        if (!mather.find()) {
-            return false;
-        }
-
-        return true;
 
     }
 

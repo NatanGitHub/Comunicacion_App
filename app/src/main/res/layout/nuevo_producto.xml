@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:hint="Nombre del Producto"
             android:inputType="text"
@@ -29,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:hint="Descripcion del Producto"
             android:inputType="textCapSentences|textMultiLine"
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:hint="Precio del Producto"
             android:inputType="number"
@@ -59,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:hint="Cantidades Disponibles"
             android:inputType="number"
@@ -69,15 +70,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/precio_producto" />
 
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/stock_producto"
+            tools:layout_editor_absoluteX="-4dp">
+
+            <LinearLayout
+                android:id="@+id/imagen_editada"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
         <com.ornach.nobobutton.NoboButton
             android:id="@+id/subir_imagen"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:padding="11dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stock_producto"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
             app:nb_backgroundColor="#22B9C6"
             app:nb_borderColor="#FFFFFF"
             app:nb_borderWidth="2dp"
@@ -90,16 +113,32 @@
             app:nb_textSize="15dp"
             app:nb_textStyle="bold" />
 
+        <TextView
+            android:id="@+id/cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="5dp"
+            android:text="Cancelar"
+            android:textColor="#F31E1E"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guardar_producto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subir_imagen" />
+
         <com.ornach.nobobutton.NoboButton
             android:id="@+id/guardar_producto"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
             android:padding="11dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cancelar"
             app:layout_constraintTop_toBottomOf="@+id/subir_imagen"
             app:nb_backgroundColor="#22B9C6"
             app:nb_borderColor="#FFFFFF"

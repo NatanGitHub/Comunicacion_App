@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,11 +29,12 @@ public class Usuarios extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser user;
+    private TextView salir;
     private DatabaseReference referenciaBD;
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private TextView usuario;
     private Context context = this;
-    ArrayList<Productos> productos = new ArrayList<>();
+    private ArrayList<Productos> productos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +77,18 @@ public class Usuarios extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_usuarios);
         usuario = findViewById(R.id.email_usuario);
+        salir = findViewById(R.id.salir);
+
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-
-        usuario.setText( "Bienvenido: " + user.getEmail() );
+        usuario.setText( user.getEmail() );
 
     }
 
@@ -116,7 +125,7 @@ public class Usuarios extends AppCompatActivity {
                     Productos p = new Productos();
 
                     p.setNombre( datos.child("nombre").getValue().toString() );
-                    p.setDetalles( datos.child("descripcion").getValue().toString() );
+                    p.setDescripcion( datos.child("descripcion").getValue().toString() );
                     p.setPrecio( Long.parseLong(datos.child("precio").getValue().toString()) );
                     p.setUrl( datos.child("url").getValue().toString() );
                     p.setFotos( Integer.parseInt(datos.child("fotos").getValue().toString()) );
