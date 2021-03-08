@@ -1,0 +1,25 @@
+
+P
+java:S1874"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî
+>
+java:S16045"(Make this anonymous inner class a lambda(ğìñ
+†
+java:S1319>"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ¯
+b
+java:S1128"@Remove this unused import 'android.widget.HorizontalScrollView'.(ĞÎ„øÿÿÿÿ8®¥Ç€/
+Š
+java:S1319 "oThe type of the "item" object should be an interface such as "List" rather than the implementation "ArrayList".(İ–Ì¤ıÿÿÿÿ
+f	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¦Ì
+K
+java:S2209."5Change this instance-reference to a static reference.(ÀÚÀ
+s
+java:S3252Ÿ"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(ÚÊ½Íÿÿÿÿÿ8Ë¤ûÆ€/
+R
+java:S1874"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8Ë¤ûÆ€/
+Z
+java:S1197^"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8äœ­Æ€/
+e	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¶
+B
+java:S1659C",Declare "precioProducto" on a separate line.(’òÔâ
+Z
+java:S1197u"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8†©‹Ç€/

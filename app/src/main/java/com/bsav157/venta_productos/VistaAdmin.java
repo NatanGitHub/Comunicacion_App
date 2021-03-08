@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -39,6 +41,7 @@ import com.ornach.nobobutton.NoboButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class VistaAdmin extends AppCompatActivity {
 
@@ -48,6 +51,10 @@ public class VistaAdmin extends AppCompatActivity {
     NoboButton crearProducto, verProductos;
     private StorageReference storageReference;
     private static final int GALLERY_INTENT = 1;
+
+    int PICK_IMAGE = 100;
+    List<Uri> listaImagenes = new ArrayList<>();
+
     Context context = this;
     private ArrayList<Productos> productos = new ArrayList<>();
     Uri uri;
@@ -122,6 +129,7 @@ public class VistaAdmin extends AppCompatActivity {
                     p.setDetalles( datos.child("descripcion").getValue().toString() );
                     p.setPrecio( Long.parseLong(datos.child("precio").getValue().toString()) );
                     p.setUrl( datos.child("url").getValue().toString() );
+                    p.setFotos( Integer.parseInt(datos.child("fotos").getValue().toString()) );
                     p.setStock( Integer.parseInt(datos.child("stock").getValue().toString()) );
 
                     productos.add(p);
@@ -154,9 +162,11 @@ public class VistaAdmin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(Intent.ACTION_PICK);
+                Intent intent = new Intent();
                 intent.setType("image/*");
-                startActivityForResult(intent, GALLERY_INTENT);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Seleccione Imagenes"), PICK_IMAGE);
 
             }
         });
@@ -193,36 +203,66 @@ public class VistaAdmin extends AppCompatActivity {
                 // Después mostrarla:
                 dialogSubiendo.show();
 
-                StorageReference destino = storageReference.child("zapatos").child(uri.getLastPathSegment());
-                destino.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                HashMap<String, Object> datosUsuario = new HashMap<>();
 
-                        HashMap<String, Object> datosUsuario = new HashMap<>();
+                String urlFotos[] = new String[listaImagenes.size()];
+
+                for ( int i = 0; i < listaImagenes.size(); i++ ){
+
+                    StorageReference guardardo = storageReference.child("zapatos").child(listaImagenes.get(i).getLastPathSegment());
+                    //Uri uri = listaImagenes.get(0);
+                    int finalI = i;
+                    guardardo.putFile(listaImagenes.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            guardardo.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    urlFotos[finalI] = uri.toString();
+                                    referenciaBD.child("zapatos").push().setValue(datosUsuario);
+                                }
+                            });
+                        }
+                    });
+                }
+
+                // Esperamos unos segundos antes de proseguir
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        String urlFinal = "";
+
+                        if(urlFotos.length < 2){
+                            urlFinal = urlFotos[0];
+                        }else{
+
+                            for(int i = 0; i < urlFotos.length; i++){
+                                urlFinal += "\f";
+                                urlFinal += urlFotos[i];
+                            }
+
+                        }
+
                         datosUsuario.put("nombre", nombre.getText().toString().trim());
                         datosUsuario.put("descripcion", detalles.getText().toString().trim());
                         datosUsuario.put("precio", Long.parseLong(precio.getText().toString().trim()));
                         datosUsuario.put("stock", Integer.parseInt(stock.getText().toString().trim()));
+                        datosUsuario.put("fotos", listaImagenes.size());
+                        datosUsuario.put("url", urlFinal);
+                        referenciaBD.child("zapatos").push().setValue(datosUsuario);
 
-                        destino.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                datosUsuario.put("url", uri.toString());
-                                referenciaBD.child("zapatos").push().setValue(datosUsuario);
-                                dialogSubiendo.dismiss();
-                                dialogPersonalizado.dismiss();
-                            }
-                        });
-
+                        dialogSubiendo.dismiss();
+                        dialogPersonalizado.dismiss();
                     }
-                });
+                }, 4000);
 
                 dialogPersonalizado.dismiss();
 
             }
         });
 
-        dialogPersonalizado.setCancelable(false);
+        dialogPersonalizado.setCancelable(true);
         onResume(dialogPersonalizado);
         // Después mostrarla:
         dialogPersonalizado.show();
@@ -268,10 +308,26 @@ public class VistaAdmin extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if( requestCode == GALLERY_INTENT && resultCode == RESULT_OK ){
+        ClipData clipData = data.getClipData();
+        int i;
 
-            Toast.makeText(this, "Imagen Escogida", Toast.LENGTH_SHORT).show();
-            uri = data.getData();
+        if( requestCode == PICK_IMAGE && resultCode == RESULT_OK ){
+
+            // Si solo se selecciona una imagen
+            if(clipData == null){
+
+                uri = data.getData();
+                listaImagenes.add(uri);
+
+            }else {// Si se seleccionan mas de una imagen
+
+               for (i = 0; i < clipData.getItemCount(); i++){
+                   listaImagenes.add( clipData.getItemAt(i).getUri() );
+               }
+
+                Toast.makeText(context, ""+listaImagenes.size(), Toast.LENGTH_SHORT).show();
+
+            }
 
         }else{
             Toast.makeText(this, "No se pudo cargar la imagen", Toast.LENGTH_LONG).show();

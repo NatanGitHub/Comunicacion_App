@@ -7,6 +7,7 @@ public class Productos {
     private String url;
     private long precio;
     private int stock;
+    private int fotos;
 
     public Productos() {
 
@@ -42,6 +43,14 @@ public class Productos {
 
     public void setPrecio(long precio) {
         this.precio = precio;
+    }
+
+    public int getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(int fotos) {
+        this.fotos = fotos;
     }
 
     public int getStock() {

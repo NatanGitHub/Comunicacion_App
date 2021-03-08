@@ -2,7 +2,9 @@ package com.bsav157.venta_productos;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.GradientDrawable;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,8 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHolder> {
 
@@ -79,12 +85,25 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
                 nombreProducto.setText(item.getNombre());
                 precioProducto.setText("$ "+item.getPrecio());
 
-                String currentUrl = item.getUrl();
+                String currentUrl = "";
+                int i = 0;
 
-                Glide.with(context)
-                        .load(currentUrl)
-                        .into(imagen);
-                //estado.setText(item.getEstado());
+                if(item.getFotos() == 1){
+                    currentUrl = item.getUrl();
+                    Glide.with(context)
+                            .load(currentUrl)
+                            .into(imagen);
+                }else{
+                    String urlFotos[] = new String[item.getFotos()];
+                    StringTokenizer st = new StringTokenizer(item.getUrl());
+                    while (st.hasMoreTokens()){
+                        urlFotos[i] = st.nextToken();
+                        i++;
+                    }
+                    Glide.with(context)
+                            .load(urlFotos[0])
+                            .into(imagen);
+                }
             }
         }
 
@@ -95,6 +114,56 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
 
         TextView nombre = dialogPersonalizado.findViewById(R.id.details_nombre);
         TextView detalles = dialogPersonalizado.findViewById(R.id.details_datos);
+        LinearLayout linearLayout = dialogPersonalizado.findViewById(R.id.cargaImagenes);
+
+        String currentUrl = "";
+        String urlFotos[] = new String[item.getFotos()];
+        int i = 0;
+
+        if(item.getFotos() == 1){// Si solo viene un link
+            currentUrl = item.getUrl();
+
+            ImageView imageView = new ImageView(context);
+
+            imageView.setAdjustViewBounds(true);
+            imageView.setPadding(10, 0, 10, 0);
+
+            Glide.with(context)
+                    .load(currentUrl)
+                    .into(imageView);
+
+            linearLayout.addView(imageView);
+
+        }else{// Si vienen varios links de varias imagenes
+
+            StringTokenizer st = new StringTokenizer(item.getUrl());
+            while (st.hasMoreTokens()){
+                urlFotos[i] = st.nextToken();
+                i++;
+            }
+
+            GradientDrawable shape = new GradientDrawable();
+            shape.setStroke(3, Color.YELLOW);
+            shape.setCornerRadius(20);
+
+            for(int j = 0; j < item.getFotos(); j++ ){
+
+                ImageView imageView = new ImageView(context);
+
+                imageView.setAdjustViewBounds(true);
+                imageView.setPadding(10, 0, 10, 0);
+                //imageView.setBackgroundDrawable(shape);
+
+                Glide.with(context)
+                        .load(urlFotos[j])
+                        .into(imageView);
+
+                linearLayout.addView(imageView);
+
+            }
+
+        }
+
         detalles.setText( item.getDetalles() );
         nombre.setText( item.getNombre() );
         onResume(dialogPersonalizado);

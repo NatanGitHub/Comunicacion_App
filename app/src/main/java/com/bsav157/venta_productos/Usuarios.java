@@ -119,6 +119,7 @@ public class Usuarios extends AppCompatActivity {
                     p.setDetalles( datos.child("descripcion").getValue().toString() );
                     p.setPrecio( Long.parseLong(datos.child("precio").getValue().toString()) );
                     p.setUrl( datos.child("url").getValue().toString() );
+                    p.setFotos( Integer.parseInt(datos.child("fotos").getValue().toString()) );
                     p.setStock( Integer.parseInt(datos.child("stock").getValue().toString()) );
 
                     productos.add(p);
