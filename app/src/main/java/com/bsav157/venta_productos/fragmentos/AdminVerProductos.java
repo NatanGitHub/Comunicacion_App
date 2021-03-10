@@ -87,7 +87,7 @@ public class AdminVerProductos extends DialogFragment implements RegistroListene
 
     public void cargarRecycler(View vista){
 
-        AdapterRecycler myAdapter = new AdapterRecycler( productos, getContext() );
+        AdapterRecycler myAdapter = new AdapterRecycler( productos, getContext(), "admin", getDialog() );
         RecyclerView recyclerView = vista.findViewById(R.id.recycler_admin);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager( new LinearLayoutManager(getContext()));

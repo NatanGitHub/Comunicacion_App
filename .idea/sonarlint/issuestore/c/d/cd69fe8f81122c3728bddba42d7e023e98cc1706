@@ -1,61 +1,78 @@
 
-`
-java:S2259·"BA "NullPointerException" could be thrown; "data" is nullable here.(ã²»8ÆàÅ€/
-Q	java:S110."<This class has 9 parents which is greater than 5 authorized.(§ı¦Ù
-F
-java:S1604Ú"(Make this anonymous inner class a lambda(é¡¤é8—«¢Å€/
-k
-java:S1192³"TDefine a constant instead of duplicating this literal "Rellenar este Campo" 4 times.(ÆÒÓ
-E
-java:S16593"*Declare "verProductos" on a separate line.(ï—üÿÿÿÿ
-R
-java:S1874”"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8ÆàÅ€/
-j
-java:S1192v"HDefine a constant instead of duplicating this literal "zapatos" 4 times.(ğš£ôüÿÿÿÿ8—«¢Å€/
->
-java:S1604W"(Make this anonymous inner class a lambda(ÊÍñß
-?
-java:S1643ò"Use a StringBuilder instead.(©ôüËøÿÿÿÿ8äËßÅ€/
-M
-java:S1874ç"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8ë¨ßÄ€/
->
-java:S1604P"(Make this anonymous inner class a lambda(îê›
-Q
-java:S1128"/Remove this unused import 'android.os.Message'.(¤ªæéıÿÿÿÿ8ŞÄÜÄ€/
-u
-java:S3776•"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(œá÷òıÿÿÿÿ8Ë·İÅ€/
-¤
-java:S1186©"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ8ÆàÅ€/
-F
-java:S1604ç"(Make this anonymous inner class a lambda(„ÑñŒ8ë¨ßÄ€/
-p	java:S1167"URename this field "PICK_IMAGE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Ø¾8–Äá½€/
-E
-java:S1874c"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ
->
-java:S1604c"(Make this anonymous inner class a lambda(„ÑñŒ
-V
-java:S1197Ğ"8Move the array designator from the variable to the type.(Úù±Ï8ğäÔÅ€/
-P
-java:S1874“"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî
-D
-java:S1604®"(Make this anonymous inner class a lambda(É€òƒÿÿÿÿÿ
-s
-java:S3252•"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(šÕÏÉúÿÿÿÿ8ÆàÅ€/
-T
-java:S10685"2Remove this unused "GALLERY_INTENT" private field.(„¤½ùÿÿÿÿ8À‡ìÂ€/
-K
-java:S1604×"(Make this anonymous inner class a lambda(¿µôÚüÿÿÿÿ8ôæƒÅ€/
-?
-java:S1604¡"(Make this anonymous inner class a lambda(Ò¹««
-C
-java:S10681"(Remove this unused "user" private field.(š·àûÿÿÿÿ
-˜
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô°¤¦
-n
-java:S14501"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àûÿÿÿÿ
 :
-java:S1643ñ"Use a StringBuilder instead.(ë¤½†8·™Æ€/
+java:S1643ì"Use a StringBuilder instead.(ë¤½†8æªòœ/
+E
+java:S1604f"(Make this anonymous inner class a lambda(ÊÍñß8ô‘¥•/
+E
+java:S1604V"(Make this anonymous inner class a lambda(îê›8ô‘¥•/
+K
+java:S1604"(Make this anonymous inner class a lambda(½›Ü‰üÿÿÿÿ8æªòœ/
+K
+java:S1604¥"(Make this anonymous inner class a lambda(É€òƒÿÿÿÿÿ8æªòœ/
 F
-java:S1604§"(Make this anonymous inner class a lambda(„¬İ™8ÆàÅ€/
+java:S1604ª"(Make this anonymous inner class a lambda(„¬İ™8æªòœ/
 F
-java:S1604 "(Make this anonymous inner class a lambda(óÔÃ˜8ÆàÅ€/
+java:S1604™"(Make this anonymous inner class a lambda(Ò¹««8æªòœ/
+y	java:S1163"XRename this field "CAPTURAR_FOTO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÕ«ğúÿÿÿÿ8•©•/
+F
+java:S1604â"(Make this anonymous inner class a lambda(„ÑñŒ8æªòœ/
+~
+java:S14501"\Remove the "crearProducto" field and declare it as a local variable in the relevant methods.(½–İÆüÿÿÿÿ8‹©›/
+L
+java:S1874s"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8‰ãÿÁ/
+i
+java:S1128"GRemove this unused import 'com.google.firebase.database.DatabaseError'.(ˆÔµıÿÿÿÿ8–›öÁ/
+u
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(œá÷òıÿÿÿÿ8æªòœ/
+¤
+java:S1186¬"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ8æªòœ/
+n
+java:S1128""LRemove this unused import 'com.google.firebase.database.ValueEventListener'.(‹ŞÜ‹ıÿÿÿÿ8–›öÁ/
+u
+java:S1450/"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àûÿÿÿÿ8€ú£›/
+s
+java:S3252˜"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(šÕÏÉúÿÿÿÿ8æªòœ/
+r
+java:S11046"UMake productos a static final constant or non-public and provide accessors if needed.(´Àï8¢˜óÁ/
+v
+java:S14509"TRemove the "salir" field and declare it as a local variable in the relevant methods.(Í¨Á»üÿÿÿÿ8ÏÎİ›/
+E
+java:S1604s"(Make this anonymous inner class a lambda(„ÑñŒ8‰ãÿÁ/
+L
+java:S16591"*Declare "verProductos" on a separate line.(½–İÆüÿÿÿÿ8ô‘¥•/
+M
+java:S1874â"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8æªòœ/
+V
+java:S1197Ì"8Move the array designator from the variable to the type.(Úù±Ï8æªòœ/
+[
+java:S1155½">Use isEmpty() to check whether the collection is empty or not.(‰©‡\8æªòœ/
+r
+java:S1192ª"TDefine a constant instead of duplicating this literal "Rellenar este Campo" 4 times.(ÆÒÓ8æªòœ/
+R
+java:S1874—"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8ô‘¥•/
+‘
+java:S13196"tThe type of the "productos" object should be an interface such as "List" rather than the implementation "ArrayList".(´Àï8¢˜óÁ/
+?
+java:S1643í"Use a StringBuilder instead.(©ôüËøÿÿÿÿ8ô‘¥•/
+D
+java:S1604O"(Make this anonymous inner class a lambda(ÁÒîd8¾Ü›/
+L
+java:S14446"/Make this "public static productos" field final(´Àï8¢˜óÁ/
+:
+java:S23866"Make this member "protected".(´Àï8¢˜óÁ/
+W
+java:S1874–"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî8æªòœ/
+U
+java:S1128"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ8–›öÁ/
+t
+java:S1450:"RRemove the "uri" field and declare it as a local variable in the relevant methods.(¨ÁÉ¬ùÿÿÿÿ8ç’Ÿ›/
+c
+java:S1128"FRemove this unused import 'com.google.firebase.database.DataSnapshot'.(şÇŒ„8–›öÁ/
+F
+java:S1604£"(Make this anonymous inner class a lambda(óÔÃ˜8æªòœ/
+M
+java:S1874ÿ"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8æªòœ/
+F
+java:S1604ÿ"(Make this anonymous inner class a lambda(„ÑñŒ8æªòœ/
+J
+java:S1068/"(Remove this unused "user" private field.(š·àûÿÿÿÿ8€ú£›/

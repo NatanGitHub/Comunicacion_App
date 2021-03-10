@@ -5,12 +5,21 @@ public class Productos {
     private String nombre;
     private String descripcion;
     private String url;
+    private String keyElemento;
     private long precio;
     private int stock;
     private int fotos;
 
     public Productos() {
 
+    }
+
+    public String getKeyElemento() {
+        return keyElemento;
+    }
+
+    public void setKeyElemento(String keyElemento) {
+        this.keyElemento = keyElemento;
     }
 
     public String getUrl() {

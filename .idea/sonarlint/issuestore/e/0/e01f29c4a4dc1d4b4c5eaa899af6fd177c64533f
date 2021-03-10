@@ -1,24 +1,28 @@
 
-q
-java:S1450"[Remove the "referenciaBD" field and declare it as a local variable in the relevant methods.(Ï¶ó
-q
-java:S1450!"VRemove the "usuario" field and declare it as a local variable in the relevant methods.(Õ“æ¿ùÿÿÿÿ
-E
-java:S1874_"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ
-F
-java:S1874"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ
-˜
-java:S1186„"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô°¤¦
-?
-java:S1604"(Make this anonymous inner class a lambda(„ÑñŒ
 >
-java:S16047"(Make this anonymous inner class a lambda(óÔÃ˜
-n
-java:S1450"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àûÿÿÿÿ
+java:S1604@"(Make this anonymous inner class a lambda(„¬İ™
+D
+java:S1604R"(Make this anonymous inner class a lambda(ÁÒîd8¨ôÖ›/
+v
+java:S1450 "TRemove the "salir" field and declare it as a local variable in the relevant methods.(Í¨Á»üÿÿÿÿ8¨ôÖ›/
 >
-java:S1604>"(Make this anonymous inner class a lambda(„¬İ™
->
-java:S1604_"(Make this anonymous inner class a lambda(„ÑñŒ
+java:S16049"(Make this anonymous inner class a lambda(óÔÃ˜
 œ
-java:S1186@"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ
-V	java:S110"<This class has 9 parents which is greater than 5 authorized.(ğÒ©Ğüÿÿÿÿ
+java:S1186B"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ
+n
+java:S1450"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àûÿÿÿÿ
+E
+java:S1874h"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ
+V	java:S110"<This class has 9 parents which is greater than 5 authorized.(ğÒ©Ğüÿÿÿÿ
+F
+java:S1874–"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ
+q
+java:S1450#"VRemove the "usuario" field and declare it as a local variable in the relevant methods.(Õ“æ¿ùÿÿÿÿ
+>
+java:S1604h"(Make this anonymous inner class a lambda(„ÑñŒ
+?
+java:S1604–"(Make this anonymous inner class a lambda(„ÑñŒ
+q
+java:S1450!"[Remove the "referenciaBD" field and declare it as a local variable in the relevant methods.(Ï¶ó
+˜
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô°¤¦

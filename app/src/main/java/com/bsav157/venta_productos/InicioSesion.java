@@ -2,6 +2,7 @@ package com.bsav157.venta_productos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,11 +13,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.telephony.CellInfoGsm;
+import android.telephony.CellSignalStrength;
+import android.telephony.CellSignalStrengthGsm;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bsav157.venta_productos.Interfaces.RegistroListener;
 import com.bsav157.venta_productos.fragmentos.Registro;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,8 +35,13 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.ornach.nobobutton.NoboButton;
 
+import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import kotlinx.coroutines.BuildersKt;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class InicioSesion extends AppCompatActivity implements RegistroListener {
 
@@ -71,7 +84,7 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
         }
     }
 
-    public void initItems(){
+    public void initItems() {
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.getInstance().signOut();
@@ -195,4 +208,5 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
                 });
 
     }
+
 }

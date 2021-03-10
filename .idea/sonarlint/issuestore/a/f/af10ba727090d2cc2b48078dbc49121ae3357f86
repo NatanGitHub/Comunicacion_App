@@ -1,25 +1,39 @@
 
-P
-java:S1874"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî
->
-java:S16045"(Make this anonymous inner class a lambda(ğìñ
-†
-java:S1319>"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ¯
-b
-java:S1128"@Remove this unused import 'android.widget.HorizontalScrollView'.(ĞÎ„øÿÿÿÿ8®¥Ç€/
-Š
-java:S1319 "oThe type of the "item" object should be an interface such as "List" rather than the implementation "ArrayList".(İ–Ì¤ıÿÿÿÿ
-f	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¦Ì
+F
+java:S1604"(Make this anonymous inner class a lambda(óÔÃ˜8„‹áÃ/
 K
-java:S2209."5Change this instance-reference to a static reference.(ÀÚÀ
-s
-java:S3252Ÿ"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(ÚÊ½Íÿÿÿÿÿ8Ë¤ûÆ€/
+java:S1604ø"(Make this anonymous inner class a lambda(½›Ü‰üÿÿÿÿ8Ò»Î¿/
+[
+java:S1197É"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8Ò»Î¿/
+¤
+java:S1186¨"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ8ËäØÃ/
+I
+java:S1659S",Declare "precioProducto" on a separate line.(’òÔâ8ò£¼/
+F
+java:S1604¦"(Make this anonymous inner class a lambda(„¬İ™8„‹áÃ/
+l	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¶8ò£¼/
+m	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¦Ì8ò£¼/
+[
+java:S1197‚"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8ò£¼/
+E
+java:S1604A"(Make this anonymous inner class a lambda(ğìñ8ò£¼/
 R
-java:S1874"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8Ë¤ûÆ€/
+java:S2209:"5Change this instance-reference to a static reference.(ÀÚÀ8ò£¼/
+‘
+java:S1319)"oThe type of the "item" object should be an interface such as "List" rather than the implementation "ArrayList".(¦æÎÓıÿÿÿÿ8ò£¼/
+W
+java:S1874¾"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî8Ò»Î¿/
+
+java:S1319N"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ¯8ò£¼/
+R
+java:S1874¿"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8À„Ğ/
+s
+java:S3252À"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(ÚÊ½Íÿÿÿÿÿ8Ò»Î¿/
 Z
-java:S1197^"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8äœ­Æ€/
-e	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¶
-B
-java:S1659C",Declare "precioProducto" on a separate line.(’òÔâ
-Z
-java:S1197u"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8†©‹Ç€/
+java:S1197k"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8ò£¼/
+K
+java:S1604ş"(Make this anonymous inner class a lambda(“û¸ˆùÿÿÿÿ8Ò»Î¿/
+F
+java:S1604–"(Make this anonymous inner class a lambda(Şü£ó8ËäØÃ/
+O
+java:S1128"3Remove this unused import 'android.content.Intent'.(³ğ‹G8àÕ…Ã/

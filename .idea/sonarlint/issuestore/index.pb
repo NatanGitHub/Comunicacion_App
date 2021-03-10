@@ -17,3 +17,15 @@ k
 Oapp/src/main/java/com/bsav157/venta_productos/fragmentos/AdminVerProductos.java,d\b\dbf9a053b359721fc28b516d385c4fb309c8ba61
 r
 Bapp/src/main/java/com/bsav157/venta_productos/AdapterRecycler.java,a\f\af10ba727090d2cc2b48078dbc49121ae3357f86
+F
+app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
+A
+gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
+X
+(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+@
+local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
+i
+9app/src/main/java/com/bsav157/venta_productos/Extras.java,c\b\cb9e5fbbd9d3e652fd97e71471502478c1e574f1
+o
+?app/src/main/java/com/bsav157/venta_productos/InicioSesion.java,c\0\c0bff4447a726146fc3e254e0ac0e412a85df4a1

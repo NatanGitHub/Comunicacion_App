@@ -51,7 +51,7 @@ public class VistaAdmin extends AppCompatActivity {
     private int CAPTURAR_FOTO = 0;
     private List<Uri> listaImagenes = new ArrayList<>();
     private Context context = this;
-    private ArrayList<Productos> productos = new ArrayList<>();
+    public static ArrayList<Productos> productos = new ArrayList<>();
     private Extras extras = new Extras(this);
     private LinearLayout linearLayout;
     private TextView salir;
@@ -110,13 +110,7 @@ public class VistaAdmin extends AppCompatActivity {
                     return;
                 }
 
-                Dialog dialogPersonalizado = new Dialog(context);
-                dialogPersonalizado.setContentView(R.layout.layout_cargando);
-                dialogPersonalizado.setCancelable(false);
-
-                // Después mostrarla:
-                dialogPersonalizado.show();
-                productZapatos();
+                extras.descargarProductos();
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -124,48 +118,12 @@ public class VistaAdmin extends AppCompatActivity {
                         FragmentManager fm = getSupportFragmentManager();
                         AdminVerProductos adminVerProductos = AdminVerProductos.newInstance("Registro", productos);
                         adminVerProductos.show(fm, "fragment_admin_ver_productos");
-                        dialogPersonalizado.dismiss();
                     }
-                }, 3000);
+                }, 3700);
 
             }
         });
 
-    }
-
-    public void productZapatos(){
-
-        referenciaBD = FirebaseDatabase.getInstance().getReference();
-
-        referenciaBD.child("zapatos").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                productos.clear();
-
-                for( DataSnapshot datos :  snapshot.getChildren()){
-
-                    Productos p = new Productos();
-
-                    p.setDescripcion( datos.child("descripcion").getValue().toString() );
-                    p.setNombre( datos.child("nombre").getValue().toString() );
-                    p.setPrecio( Long.parseLong(datos.child("precio").getValue().toString()) );
-                    p.setUrl( datos.child("url").getValue().toString() );
-                    p.setFotos( Integer.parseInt(datos.child("fotos").getValue().toString()) );
-                    p.setStock( Integer.parseInt(datos.child("stock").getValue().toString()) );
-
-                    productos.add(p);
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
     }
 
     public void dialogCrearProducto(){
