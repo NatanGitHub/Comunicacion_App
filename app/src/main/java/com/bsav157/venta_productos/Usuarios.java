@@ -156,7 +156,7 @@ public class Usuarios extends AppCompatActivity {
                     return;
                 }
 
-                AdapterRecycler myAdapter = new AdapterRecycler( productos, context, "usuario", null );
+                AdapterRecycler myAdapter = new AdapterRecycler( productos, context, "usuario" );
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager( new LinearLayoutManager(context));
                 recyclerView.setAdapter(myAdapter);

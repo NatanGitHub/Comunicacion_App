@@ -2,11 +2,10 @@ package com.bsav157.venta_productos;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.ActivityNavigator;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -16,23 +15,18 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.transition.Explode;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.bsav157.venta_productos.fragmentos.AdminVerProductos;
-import com.bumptech.glide.Glide;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,19 +43,28 @@ import java.util.List;
 
 public class VistaAdmin extends AppCompatActivity {
 
+    // Variables FireBase
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference referenciaBD;
-    private NoboButton crearProducto, verProductos;
     private StorageReference storageReference;
+
+    // Variables de la vista
+    private NoboButton crearProducto, verProductos;
+    private LinearLayout parentLinearLayout;
+    private Dialog dialogCrear;
+    private TextView salir;
+    private ConstraintLayout constraintBotones, constraintRecycler;
+    private RecyclerView recyclerView;
+    private TextView regresarMenu;
+
+    // Otras variables
     private int CAPTURAR_FOTO = 0;
     public static List<Uri> listaImagenes = new ArrayList<>();
     private Context context = this;
     public static ArrayList<Productos> productos = new ArrayList<>();
-    private LinearLayout parentLinearLayout;
     private Extras extras = new Extras(this);
-    private Dialog dialogCrear;
-    private TextView salir;
+    private AdapterRecycler myAdapterRecycler;
     private Uri uri;
 
     @Override
@@ -77,17 +80,22 @@ public class VistaAdmin extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         referenciaBD = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
+
         verProductos = findViewById(R.id.ver_productos);
         crearProducto = findViewById(R.id.crear_producto);
+        recyclerView = findViewById(R.id.recycler_admin);
+        constraintBotones = findViewById(R.id.botones);
+        constraintRecycler = findViewById(R.id.recycler_view);
+        regresarMenu = findViewById(R.id.regresar);
         salir = findViewById(R.id.salir);
 
+        // OnClicks
         salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
-
         crearProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +111,6 @@ public class VistaAdmin extends AppCompatActivity {
                 dialogCrearProducto();
             }
         });
-
         verProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,15 +122,34 @@ public class VistaAdmin extends AppCompatActivity {
                     return;
                 }
 
+                productos.clear();
                 extras.descargarProductos();
+
+                constraintBotones.setVisibility(View.GONE);
+                constraintRecycler.setVisibility(View.VISIBLE);
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        FragmentManager fm = getSupportFragmentManager();
-                        AdminVerProductos adminVerProductos = AdminVerProductos.newInstance("Registro", productos);
-                        adminVerProductos.show(fm, "fragment_admin_ver_productos");
+                        myAdapterRecycler = new AdapterRecycler( productos, context, "admin" );
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setLayoutManager( new LinearLayoutManager(context));
+                        recyclerView.setAdapter(myAdapterRecycler);
+                        regresarMenu.setVisibility(View.VISIBLE);
                     }
                 }, 3700);
+            }
+        });
+        regresarMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(view.getVisibility() == View.VISIBLE){
+                    view.setVisibility(View.INVISIBLE);
+                    constraintRecycler.setVisibility(View.GONE);
+                    constraintBotones.setVisibility(View.VISIBLE);
+                    productos.clear();
+                    myAdapterRecycler.notifyDataSetChanged();
+                }
             }
         });
     }

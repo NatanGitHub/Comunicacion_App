@@ -5,12 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VistaAdmin">
+    tools:context=".VistaAdmin"
+    android:animateLayoutChanges="true"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/barra_superior"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:animateLayoutChanges="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,22 +22,39 @@
             android:id="@+id/salir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/ic_salida"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/regresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="MENU"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/texto_logo"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/botones"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/barra_superior">
 
         <com.ornach.nobobutton.NoboButton
             android:id="@+id/ver_productos"
@@ -77,6 +97,29 @@
             app:nb_textColor="#FFF"
             app:nb_textSize="15dp"
             app:nb_textStyle="bold" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        android:animateLayoutChanges="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barra_superior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_admin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

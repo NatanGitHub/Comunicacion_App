@@ -49,20 +49,18 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
         private ArrayList<Productos> datos;
         private LayoutInflater mInflater;
         private Context context;
-        private Dialog dialog;
         private String tipo;
         private Extras extras;
         private LinearLayout parentLinearLayout;
         private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         int CAPTURAR_FOTO = 0;
 
-        public AdapterRecycler(ArrayList<Productos> item, Context context, String recibeTipo, Dialog receiveDialog){
+        public AdapterRecycler(ArrayList<Productos> item, Context context, String recibeTipo){
             this.mInflater= LayoutInflater.from(context);
             this.context=context;
             this.datos= item;
             tipo = recibeTipo;
             extras = new Extras(context);
-            dialog = receiveDialog;
         }
 
         @Override
@@ -294,7 +292,6 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
                 item.setStock( Integer.parseInt( stock.getText().toString().trim() ) );
 
                 extras.actualizaProducto(item);
-                dialog.dismiss();
                 dialogVerProductos.dismiss();
             }
         });
