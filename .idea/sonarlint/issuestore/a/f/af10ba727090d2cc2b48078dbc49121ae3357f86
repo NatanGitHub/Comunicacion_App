@@ -1,39 +1,64 @@
 
-F
-java:S1604"(Make this anonymous inner class a lambda(óÔÃ˜8„‹áÃ/
-K
-java:S1604ø"(Make this anonymous inner class a lambda(½›Ü‰üÿÿÿÿ8Ò»Î¿/
-[
-java:S1197É"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8Ò»Î¿/
-¤
-java:S1186¨"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ8ËäØÃ/
-I
-java:S1659S",Declare "precioProducto" on a separate line.(’òÔâ8ò£¼/
-F
-java:S1604¦"(Make this anonymous inner class a lambda(„¬İ™8„‹áÃ/
-l	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¶8ò£¼/
-m	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¦Ì8ò£¼/
-[
-java:S1197‚"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8ò£¼/
+V
+java:S1128"4Remove this unused import 'android.app.AlertDialog'.(ª½øşüÿÿÿÿ8“÷•·ƒ/
 E
-java:S1604A"(Make this anonymous inner class a lambda(ğìñ8ò£¼/
-R
-java:S2209:"5Change this instance-reference to a static reference.(ÀÚÀ8ò£¼/
-‘
-java:S1319)"oThe type of the "item" object should be an interface such as "List" rather than the implementation "ArrayList".(¦æÎÓıÿÿÿÿ8ò£¼/
-W
-java:S1874¾"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî8Ò»Î¿/
-
-java:S1319N"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ¯8ò£¼/
-R
-java:S1874¿"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8À„Ğ/
-s
-java:S3252À"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(ÚÊ½Íÿÿÿÿÿ8Ò»Î¿/
-Z
-java:S1197k"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8ò£¼/
+java:S1604Ï"(Make this anonymous inner class a lambda(¬Ù·c8ù¾„¼ƒ/
+[
+java:S1197‹"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8ù¾„¼ƒ/
 K
-java:S1604ş"(Make this anonymous inner class a lambda(“û¸ˆùÿÿÿÿ8Ò»Î¿/
-F
-java:S1604–"(Make this anonymous inner class a lambda(Şü£ó8ËäØÃ/
+java:S1604‹"(Make this anonymous inner class a lambda(“û¸ˆùÿÿÿÿ8ù¾„¼ƒ/
+Y
+java:S1128"7Remove this unused import 'android.transition.Explode'.(–´÷şÿÿÿÿ8ˆÿ¼ƒ/
+Q
+java:S10688"4Remove this unused "storageReference" private field.(¥¾äÇ8ğ¡»ƒ/
+t	java:S1169"XRename this field "CAPTURAR_FOTO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ«É˜8ê¹˜ºƒ/
+e
+java:S1128$"CRemove this unused import 'com.google.firebase.storage.UploadTask'.(®ğÇıÿÿÿÿ8–ô»ƒ/
+l	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¶8§©·ƒ/
+ƒ
+java:S14507"aRemove the "parentLinearLayout" field and declare it as a local variable in the relevant methods.(Ùîıüÿÿÿÿ8ğ¡»ƒ/
+‘
+java:S1319;"oThe type of the "item" object should be an interface such as "List" rather than the implementation "ArrayList".(¦æÎÓıÿÿÿÿ8§©·ƒ/
+R
+java:S1874é"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8êÚò»ƒ/
+N
+java:S1128"1Remove this unused import 'android.app.Activity'.(‡ÊÍÆ8ìêš»ƒ/
+^
+java:S1128"<Remove this unused import 'android.content.DialogInterface'.(Š­›¨şÿÿÿÿ8“÷•·ƒ/
+s
+java:S3252ê"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(ÚÊ½Íÿÿÿÿÿ8ù¾„¼ƒ/
+h
+java:S1128!"KRemove this unused import 'com.google.android.gms.tasks.OnSuccessListener'.(íå¡8–ô»ƒ/
+P
+java:S1128)".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¢ÿÈ·ƒ/
 O
-java:S1128"3Remove this unused import 'android.content.Intent'.(³ğ‹G8àÕ…Ã/
+java:S1128"3Remove this unused import 'android.content.Intent'.(³ğ‹G8ìêš»ƒ/
+W
+java:S1874è"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî8ù¾„¼ƒ/
+
+java:S1319b"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ¯8ù¾„¼ƒ/
+|
+java:S1192"^Define a constant instead of duplicating this literal "El campo no puede estar vacio" 4 times.(Ÿ±°ÿ8ù¾„¼ƒ/
+I
+java:S1659s",Declare "precioProducto" on a separate line.(’òÔâ8ù¾„¼ƒ/
+[
+java:S1197¢"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8ù¾„¼ƒ/
+K
+java:S1604…"(Make this anonymous inner class a lambda(½›Ü‰üÿÿÿÿ8ù¾„¼ƒ/
+[
+java:S1197Û"8Move the array designator from the variable to the type.(·í‘£üÿÿÿÿ8ù¾„¼ƒ/
+m	java:S117w"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¦Ì8ù¾„¼ƒ/
+b
+java:S1128&"ERemove this unused import 'com.theartofdev.edmodo.cropper.CropImage'.(ª¦”8™£ø¹ƒ/
+V
+java:S1128"9Remove this unused import 'androidx.annotation.Nullable'.(¾Èêš8™£ø¹ƒ/
+E
+java:S1604S"(Make this anonymous inner class a lambda(ğìñ8§©·ƒ/
+R
+java:S2209L"5Change this instance-reference to a static reference.(ÀÚÀ8§©·ƒ/
+F
+java:S1604Ç"(Make this anonymous inner class a lambda(ªáœ³8ù¾„¼ƒ/
+M
+java:S1128*"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8 ÓÀºƒ/
+
+java:S1186g"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(†·õ8ù¾„¼ƒ/

@@ -29,3 +29,7 @@ i
 9app/src/main/java/com/bsav157/venta_productos/Extras.java,c\b\cb9e5fbbd9d3e652fd97e71471502478c1e574f1
 o
 ?app/src/main/java/com/bsav157/venta_productos/InicioSesion.java,c\0\c0bff4447a726146fc3e254e0ac0e412a85df4a1
+~
+Napp/src/main/java/com/bsav157/venta_productos/Interfaces/RegistroListener.java,7\3\7323d90e40dc2200a7eeaf7876bb043a9d5a1435
+i
+9app/src/main/java/com/bsav157/venta_productos/Splash.java,2\6\26b83ffe36e26ee56c9e7e18e6db42f07b3701fd

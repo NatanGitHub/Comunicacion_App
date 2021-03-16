@@ -13,33 +13,26 @@
         android:layout_height="wrap_content"
         >
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/texto_editable"
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/gif_loading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/splash" />
 
-        <TextView
-            android:id="@+id/texto_editable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Descargando Productos"
-            android:textSize="20dp"
-            android:textStyle="bold"
+        <ImageView
+            android:id="@+id/gif_loading"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

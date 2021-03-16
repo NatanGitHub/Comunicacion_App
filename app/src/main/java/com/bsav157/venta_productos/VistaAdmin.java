@@ -1,9 +1,12 @@
 package com.bsav157.venta_productos;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.ActivityNavigator;
+
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -13,25 +16,28 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.transition.Explode;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bsav157.venta_productos.fragmentos.AdminVerProductos;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -49,11 +55,12 @@ public class VistaAdmin extends AppCompatActivity {
     private NoboButton crearProducto, verProductos;
     private StorageReference storageReference;
     private int CAPTURAR_FOTO = 0;
-    private List<Uri> listaImagenes = new ArrayList<>();
+    public static List<Uri> listaImagenes = new ArrayList<>();
     private Context context = this;
     public static ArrayList<Productos> productos = new ArrayList<>();
+    private LinearLayout parentLinearLayout;
     private Extras extras = new Extras(this);
-    private LinearLayout linearLayout;
+    private Dialog dialogCrear;
     private TextView salir;
     private Uri uri;
 
@@ -62,7 +69,6 @@ public class VistaAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_admin);
         initItems();
-
     }
 
     public void initItems(){
@@ -71,7 +77,6 @@ public class VistaAdmin extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         referenciaBD = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
-
         verProductos = findViewById(R.id.ver_productos);
         crearProducto = findViewById(R.id.crear_producto);
         salir = findViewById(R.id.salir);
@@ -111,7 +116,6 @@ public class VistaAdmin extends AppCompatActivity {
                 }
 
                 extras.descargarProductos();
-
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -120,48 +124,42 @@ public class VistaAdmin extends AppCompatActivity {
                         adminVerProductos.show(fm, "fragment_admin_ver_productos");
                     }
                 }, 3700);
-
             }
         });
-
     }
 
     public void dialogCrearProducto(){
 
-        Dialog dialogPersonalizado = new Dialog(this);
-        dialogPersonalizado.setContentView(R.layout.nuevo_producto);
-        dialogPersonalizado.setCancelable(false);
+        dialogCrear = new Dialog(this);
+        dialogCrear.setContentView(R.layout.nuevo_producto);
+        parentLinearLayout = (LinearLayout) dialogCrear.findViewById(R.id.imagen_editada);
+        dialogCrear.setCancelable(false);
 
-        linearLayout = dialogPersonalizado.findViewById(R.id.imagen_editada);
-        EditText nombre = dialogPersonalizado.findViewById(R.id.nombre_producto);
-        EditText detalles = dialogPersonalizado.findViewById(R.id.descripcion_producto);
-        EditText precio = dialogPersonalizado.findViewById(R.id.precio_producto);
-        EditText stock = dialogPersonalizado.findViewById(R.id.stock_producto);
-        NoboButton imagen = dialogPersonalizado.findViewById(R.id.subir_imagen);
-        NoboButton guardar = dialogPersonalizado.findViewById(R.id.guardar_producto);
-        TextView cancelar = dialogPersonalizado.findViewById(R.id.cancelar);
+        EditText nombre = dialogCrear.findViewById(R.id.nombre_producto);
+        EditText detalles = dialogCrear.findViewById(R.id.descripcion_producto);
+        EditText precio = dialogCrear.findViewById(R.id.precio_producto);
+        EditText stock = dialogCrear.findViewById(R.id.stock_producto);
+        NoboButton imagen = dialogCrear.findViewById(R.id.subir_imagen);
+        NoboButton guardar = dialogCrear.findViewById(R.id.guardar_producto);
+        TextView cancelar = dialogCrear.findViewById(R.id.cancelar);
 
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listaImagenes.clear();
-                dialogPersonalizado.dismiss();
+                dialogCrear.dismiss();
                 verProductos.setEnabled(true);
             }
         });
-
         imagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Seleccione Imagenes"), CAPTURAR_FOTO);
-
             }
         });
-
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -194,9 +192,6 @@ public class VistaAdmin extends AppCompatActivity {
                 Dialog dialogSubiendo = new Dialog(context);
                 dialogSubiendo.setContentView(R.layout.layout_cargando);
                 dialogSubiendo.setCancelable(false);
-                TextView texto = dialogSubiendo.findViewById(R.id.texto_editable);
-                texto.setText("Subiendo Producto");
-                // Después mostrarla:
                 dialogSubiendo.show();
 
                 HashMap<String, Object> datosUsuario = new HashMap<>();
@@ -204,7 +199,6 @@ public class VistaAdmin extends AppCompatActivity {
                 String urlFotos[] = new String[listaImagenes.size()];
 
                 for ( int i = 0; i < listaImagenes.size(); i++ ){
-
                     StorageReference guardardo = storageReference.child("zapatos").child(listaImagenes.get(i).getLastPathSegment());
                     //Uri uri = listaImagenes.get(0);
                     int finalI = i;
@@ -248,7 +242,7 @@ public class VistaAdmin extends AppCompatActivity {
                         referenciaBD.child("zapatos").push().setValue(datosUsuario);
 
                         listaImagenes.clear();
-                        dialogPersonalizado.dismiss();
+                        dialogCrear.dismiss();
                         dialogSubiendo.dismiss();
 
                         // Le doy unos segundos de espera para poder ver productos
@@ -258,17 +252,14 @@ public class VistaAdmin extends AppCompatActivity {
                                 verProductos.setEnabled(true);
                             }
                         }, 3000);
-
                     }
                 }, 5000);
-
             }
         });
 
-        dialogPersonalizado.setCancelable(true);
-        onResume(dialogPersonalizado);
-        // Después mostrarla:
-        dialogPersonalizado.show();
+        dialogCrear.setCancelable(true);
+        onResume(dialogCrear);
+        dialogCrear.show();
 
     }
 
@@ -279,7 +270,6 @@ public class VistaAdmin extends AppCompatActivity {
         display.getSize(size);
         window.setLayout((int) (size.x * 0.94), WindowManager.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.CENTER);
-        super.onResume();
     }
 
     @Override
@@ -293,6 +283,7 @@ public class VistaAdmin extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 mAuth.signOut();
                 finish();
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -311,12 +302,9 @@ public class VistaAdmin extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        int i;
-
         if( requestCode == CAPTURAR_FOTO && resultCode == RESULT_OK ){
 
             uri = data.getData();
-
             CropImage.activity(uri)
                     .start(this);
 
@@ -326,29 +314,47 @@ public class VistaAdmin extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
 
-                ImageView imageView = new ImageView(context);
-
-                imageView.setAdjustViewBounds(true);
-                imageView.setPadding(15, 0, 10, 0);
-                imageView.setImageURI(result.getUri());
-                imageView.setMinimumHeight(100);
-                linearLayout.addView(imageView);
-
                 listaImagenes.add(result.getUri());
+                crearImagen(result.getUri());
 
-                //Uri resultUri = result.getUri();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-
-                Toast.makeText(context, "No se cargo una imagen", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(this, "No se pudo cortar la imagen", Toast.LENGTH_SHORT).show();
             }
 
-            //Toast.makeText(context, "Imagen Editada", Toast.LENGTH_SHORT).show();
-
         }else{
-            Toast.makeText(this, "No se pudo cargar la imagen", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No se pudo cargar la imagen", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void eliminarImagen(Uri uri){
+        int i;
+        for(i = 0; i < listaImagenes.size(); i++){
+            if( listaImagenes.get(i).equals(uri) ){
+                listaImagenes.remove(i);
+                Toast.makeText(context, "Cantidad fotos: " + listaImagenes.size(), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    public void crearImagen(Uri uri){
+
+        LayoutInflater inflater=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View rowView = inflater.inflate(R.layout.layout_imagen, null);
+        ImageView imageView = rowView.findViewById(R.id.imagen);
+        imageView.setAdjustViewBounds(true);
+        imageView.setMinimumHeight(100);
+        imageView.setPadding(15, 0, 10, 0);
+        imageView.setImageURI(uri);
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                parentLinearLayout.removeView((View) view.getParent());
+                eliminarImagen(uri);
+                return false;
+            }
+        });
+        parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
     }
 
 }

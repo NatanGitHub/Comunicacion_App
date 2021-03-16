@@ -1,18 +1,23 @@
 
-•
-java:S1319$"zThe type of the "recibeProductos" object should be an interface such as "List" rather than the implementation "ArrayList".(ïªŒ¹úÿÿÿÿ
-2
-java:S1116"Remove this empty statement.(ŸÌ£Å
-F
-java:S1068"0Remove this unused "referenciaBD" private field.(Ï¶ó
 C
-java:S1604O"(Make this anonymous inner class a lambda(Ú—Úøÿÿÿÿ
-—
-java:S1186c"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•ÿÃŞ
-r
-java:S1450"WRemove the "regresar" field and declare it as a local variable in the relevant methods.(Ó¨ã¨ûÿÿÿÿ
-O
-java:S1874D"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî
+java:S1604P"(Make this anonymous inner class a lambda(Ú—Úøÿÿÿÿ
+F
+java:S1068"0Remove this unused "referenciaBD" private field.(Ï¶ó
+•
+java:S1319%"zThe type of the "recibeProductos" object should be an interface such as "List" rather than the implementation "ArrayList".(ïªŒ¹úÿÿÿÿ
+
+java:S1186d"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(†·õ8êÖÜŒ‚/
 J
-java:S1874E"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ
-f	java:S117c"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ÿÃŞ
+java:S1874F"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ
+r
+java:S1450"WRemove the "regresar" field and declare it as a local variable in the relevant methods.(Ó¨ã¨ûÿÿÿÿ
+£
+java:S1186i"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰ªê³üÿÿÿÿ8êÖÜŒ‚/
+^
+java:S1128"BRemove this unused import 'android.transition.TransitionInflater'.(µ³õ8ƒ‹à¼ƒ/
+2
+java:S1116"Remove this empty statement.(ŸÌ£Å
+W
+java:S1161B":Add the "@Override" annotation above this method signature(öÿÕÅ8À—Ÿä/
+O
+java:S1874E"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî

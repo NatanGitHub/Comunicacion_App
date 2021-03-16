@@ -1,55 +1,86 @@
 
+]
+java:S1192O"GDefine a constant instead of duplicating this literal "correo" 3 times.(¢ÚÙŞ
+P
+java:S1874Ë"2Remove this use of "setMessage"; it is deprecated.(ëØ“­8 ·Ò´‚/
 h
-java:S1192G"FDefine a constant instead of duplicating this literal "clave" 3 times.(Ëî²úÿÿÿÿ8œ­âº/
-Z
-java:S1128"=Remove this unused import 'androidx.core.app.ActivityCompat'.(ş¤—²8ïÛ¾/
+java:S1192P"FDefine a constant instead of duplicating this literal "clave" 3 times.(Ëî²úÿÿÿÿ8µ¯Á´‚/
 O
-java:S1128	"-Remove this unused import 'android.Manifest'.(¦øïúÿÿÿÿ8ïÛ¾/
-t
-java:S3776W"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(•×‘§üÿÿÿÿ8œ­âº/
-X
-java:S1874_"6Remove this use of "ProgressDialog"; it is deprecated.(Ö¿®üÿÿÿÿ8œ­âº/
-`
-java:S1128">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ8•¾º/
-O
-java:S1128"-Remove this unused import 'android.os.Build'.(ãÇ¤Úıÿÿÿÿ8ïÛ¾/
-z
-java:S14502"XRemove the "registrar" field and declare it as a local variable in the relevant methods.(åƒ¤”úÿÿÿÿ8œ­âº/
+java:S1874˜"2Remove this use of "setMessage"; it is deprecated.(½®¨@8µ¯Á´‚/
+J
+java:S1604j"(Make this anonymous inner class a lambda(Ò†êøÿÿÿÿ8µ¯Á´‚/
 W
-java:S1128&"5Remove this unused import 'java.lang.reflect.Method'.(Í“¯äüÿÿÿÿ8É¹ı¹/
-Q
-java:S1128'"4Remove this unused import 'java.util.regex.Matcher'.(ëÅ›ã8Á½“›/
+java:S11283":Remove this unused import 'kotlinx.coroutines.BuildersKt'.(Ï—Ñı8µ¯Á´‚/
+E
+java:S16599"(Declare "campoClave" on a separate line.(©–ª8µ¯Á´‚/
+S
+java:S2209œ"5Change this instance-reference to a static reference.(ìøç®8µ¯Á´‚/
+¤
+java:S1186è"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰ªê³üÿÿÿÿ8 ·Ò´‚/
+X
+java:S1128"6Remove this unused import 'android.location.Location'.(›¡ì®øÿÿÿÿ8Éû¨µ‚/
+[
+java:S1128"?Remove this unused import 'android.telephony.TelephonyManager'.(Ìâû18•Á´‚/
+W
+java:S1128-"5Remove this unused import 'java.lang.reflect.Method'.(Í“¯äüÿÿÿÿ8É¹ı¹/
+n
+java:S11285"QRemove this unused import 'android.content.pm.PackageManager.PERMISSION_GRANTED'.(¨ŒĞä8Éû¨µ‚/
+a
+java:S1128"DRemove this unused import 'android.telephony.CellSignalStrengthGsm'.(­—Î8ïÛ¾/
+O
+java:S1128"-Remove this unused import 'android.os.Build'.(ãÇ¤Úıÿÿÿÿ8•Á´‚/
+V
+java:S11281"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8µ¯Á´‚/
+Z
+java:S1128"=Remove this unused import 'androidx.core.app.ActivityCompat'.(ş¤—²8Éû¨µ‚/
+X
+java:S1128"6Remove this unused import 'android.location.Geocoder'.(¼ö„øÿÿÿÿ8Éû¨µ‚/
+Z
+java:S1128"=Remove this unused import 'android.location.LocationManager'.(Ü©ÎÎ8Éû¨µ‚/
 b
 java:S1128"@Remove this unused import 'androidx.core.content.ContextCompat'.(üäÂùÿÿÿÿ8­²úš/
-W
-java:S1128*":Remove this unused import 'kotlinx.coroutines.BuildersKt'.(Ï—Ñı8œ­âº/
-E
-java:S1604r"(Make this anonymous inner class a lambda(”€›’8œ­âº/
-[
-java:S1128"?Remove this unused import 'android.telephony.TelephonyManager'.(Ìâû18ïÛ¾/
-E
-java:S16590"(Declare "campoClave" on a separate line.(©–ª8œ­âº/
-\
-java:S1128":Remove this unused import 'android.telephony.CellInfoGsm'.(ÊÛŸ¾ûÿÿÿÿ8ïÛ¾/
-V
-java:S1128("4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8œ­âº/
-P
-java:S1874¸"2Remove this use of "setMessage"; it is deprecated.(ëØ“­8éöèº/
-J
-java:S1604a"(Make this anonymous inner class a lambda(Ò†êøÿÿÿÿ8œ­âº/
-c
-java:S1128"ARemove this unused import 'android.telephony.CellSignalStrength'.(š¥©şÿÿÿÿ8œ­âº/
-O
-java:S1874Œ"2Remove this use of "setMessage"; it is deprecated.(½®¨@8œ­âº/
-X
-java:S18743"6Remove this use of "ProgressDialog"; it is deprecated.(æÃÜªøÿÿÿÿ8œ­âº/
-Y
-java:S1128"=Remove this unused import 'android.telephony.SignalStrength'.(–¾”X8œ­âº/
-]
-java:S1192F"GDefine a constant instead of duplicating this literal "correo" 3 times.(¢ÚÙŞ
-n
-java:S1128,"QRemove this unused import 'android.content.pm.PackageManager.PERMISSION_GRANTED'.(¨ŒĞä8ëƒıº/
-a
-java:S1128"DRemove this unused import 'android.telephony.CellSignalStrengthGsm'.(­—Î8ïÛ¾/
+¤
+java:S1186Â"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ê•ãÏûÿÿÿÿ8Éû¨µ‚/
 t
-java:S14501"WRemove the "ingresar" field and declare it as a local variable in the relevant methods.(ˆ¯·8†şš›/
+java:S1450:"WRemove the "ingresar" field and declare it as a local variable in the relevant methods.(ˆ¯·8†şš›/
+t
+java:S3776`"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(•×‘§üÿÿÿÿ8µ¯Á´‚/
+X
+java:S1874<"6Remove this use of "ProgressDialog"; it is deprecated.(æÃÜªøÿÿÿÿ8µ¯Á´‚/
+W
+java:S1128"5Remove this unused import 'android.location.Address'.(ˆùÄ©úÿÿÿÿ8Éû¨µ‚/
+Q
+java:S11280"4Remove this unused import 'java.util.regex.Matcher'.(ëÅ›ã8Á½“›/
+O
+java:S1128	"-Remove this unused import 'android.Manifest'.(¦øïúÿÿÿÿ8Éû¨µ‚/
+Y
+java:S1128"=Remove this unused import 'android.telephony.SignalStrength'.(–¾”X8œ­âº/
+k
+java:S1128#"NRemove this unused import 'com.google.android.gms.common.api.GoogleApiClient'.(¹¾êŒ8Éû¨µ‚/
+z
+java:S1450;"XRemove the "registrar" field and declare it as a local variable in the relevant methods.(åƒ¤”úÿÿÿÿ8µ¯Á´‚/
+S
+java:S1128"6Remove this unused import 'android.location.Criteria'.(ñÈ¬8Éû¨µ‚/
+O
+java:S1128/"-Remove this unused import 'java.util.Locale'.(åğ×±ûÿÿÿÿ8Éû¨µ‚/
+\
+java:S1128":Remove this unused import 'android.telephony.CellInfoGsm'.(ÊÛŸ¾ûÿÿÿÿ8ïÛ¾/
+M
+java:S1128."+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Éû¨µ‚/
+R
+java:S2209c"5Change this instance-reference to a static reference.(ìøç®8µ¯Á´‚/
+X	java:S1107"<This class has 9 parents which is greater than 5 authorized.(óÊ½8µ¯Á´‚/
+d
+java:S1128$"BRemove this unused import 'com.google.android.gms.maps.GoogleMap'.(ƒ¼’ùÿÿÿÿ8Éû¨µ‚/
+c
+java:S1128"ARemove this unused import 'android.telephony.CellSignalStrength'.(š¥©şÿÿÿÿ8œ­âº/
+`
+java:S1128">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ8Éû¨µ‚/
+K
+java:S1604Ğ"(Make this anonymous inner class a lambda(¥íîŸÿÿÿÿÿ8 ·Ò´‚/
+K
+java:S1604Ÿ"(Make this anonymous inner class a lambda(ªÆƒ¬şÿÿÿÿ8µ¯Á´‚/
+X
+java:S1874h"6Remove this use of "ProgressDialog"; it is deprecated.(Ö¿®üÿÿÿÿ8µ¯Á´‚/
+E
+java:S1604{"(Make this anonymous inner class a lambda(”€›’8µ¯Á´‚/

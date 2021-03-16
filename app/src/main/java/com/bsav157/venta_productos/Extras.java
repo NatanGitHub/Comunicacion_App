@@ -1,14 +1,22 @@
 package com.bsav157.venta_productos;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.drawable.AnimationDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.bsav157.venta_productos.Interfaces.RegistroListener;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +38,7 @@ public class Extras {
     private DatabaseReference referenciaBD;
     private ArrayList<Productos> productos = new ArrayList<>();
     private StorageReference storageRef;
+    private boolean response = false;
 
     public Extras(Context context) {
         this.context = context;
@@ -39,17 +48,15 @@ public class Extras {
 
     public boolean isOnline() {
 
-        try {
-            Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.es");
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
-            int val           = p.waitFor();
-            boolean reachable = (val == 0);
-            return reachable;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
         }
+
         return false;
+
     }
 
     public boolean correoValido(String correo){
@@ -73,8 +80,6 @@ public class Extras {
         Dialog actualizando = new Dialog(context);
         actualizando.setContentView(R.layout.layout_cargando);
         actualizando.setCancelable(false);
-        TextView texto = actualizando.findViewById(R.id.texto_editable);
-        texto.setText("Actualizando Producto");
         actualizando.show();
 
         referenciaBD.child("zapatos").child(producto.getKeyElemento()).setValue(producto);
@@ -82,10 +87,9 @@ public class Extras {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 actualizando.dismiss();
             }
-        }, 3800);
+        }, 4000);
 
     }
 
@@ -106,7 +110,6 @@ public class Extras {
             StorageReference reference = storageRef.child( "zapatos/" + nombre );
             reference.delete();
 
-
             return;
 
         }else {// Si vienen varios links de varias imagenes
@@ -116,7 +119,6 @@ public class Extras {
                 urlFotos[i] = st.nextToken();
                 i++;
             }
-
         }
 
         for ( i = 0; i < urlFotos.length; i++ ){
@@ -124,16 +126,13 @@ public class Extras {
             String nombre = urlFotos[i].substring(85);
             int indice = nombre.indexOf("?", 0);
             nombre = nombre.substring(0, indice);
-
             StorageReference reference = storageRef.child( "zapatos/" + nombre );
             reference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                 }
             });
-
         }
-
     }
 
     public void descargarProductos(){
@@ -141,8 +140,12 @@ public class Extras {
         Dialog descargando = new Dialog(context);
         descargando.setContentView(R.layout.layout_cargando);
         descargando.setCancelable(false);
-        TextView texto = descargando.findViewById(R.id.texto_editable);
-        texto.setText("Descargando Productos");
+        ImageView imageView = descargando.findViewById(R.id.gif_loading);
+        imageView.setBackgroundResource(R.drawable.loading);
+
+        AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getBackground();
+        animationDrawable.start();
+
         descargando.show();
 
         referenciaBD.child("zapatos").addValueEventListener(new ValueEventListener() {
@@ -179,8 +182,24 @@ public class Extras {
             public void run() {
                 VistaAdmin.productos = productos;
                 descargando.dismiss();
+                animationDrawable.stop();
             }
         }, 3500);
+
+    }
+
+    public String[] tokenizarLinksImagen(int cantidad, String url){
+
+        int i = 0;
+        String[] urlFotos = new String[cantidad];
+
+        StringTokenizer st = new StringTokenizer(url);
+        while (st.hasMoreTokens()){
+            urlFotos[i] = st.nextToken();
+            i++;
+        }
+
+        return urlFotos;
 
     }
 

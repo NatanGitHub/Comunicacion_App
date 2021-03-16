@@ -1,78 +1,103 @@
 
 :
-java:S1643ì"Use a StringBuilder instead.(ë¤½†8æªòœ/
-E
-java:S1604f"(Make this anonymous inner class a lambda(ÊÍñß8ô‘¥•/
-E
-java:S1604V"(Make this anonymous inner class a lambda(îê›8ô‘¥•/
-K
-java:S1604"(Make this anonymous inner class a lambda(½›Ü‰üÿÿÿÿ8æªòœ/
-K
-java:S1604¥"(Make this anonymous inner class a lambda(É€òƒÿÿÿÿÿ8æªòœ/
-F
-java:S1604ª"(Make this anonymous inner class a lambda(„¬İ™8æªòœ/
-F
-java:S1604™"(Make this anonymous inner class a lambda(Ò¹««8æªòœ/
-y	java:S1163"XRename this field "CAPTURAR_FOTO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÕ«ğúÿÿÿÿ8•©•/
-F
-java:S1604â"(Make this anonymous inner class a lambda(„ÑñŒ8æªòœ/
-~
-java:S14501"\Remove the "crearProducto" field and declare it as a local variable in the relevant methods.(½–İÆüÿÿÿÿ8‹©›/
-L
-java:S1874s"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8‰ãÿÁ/
-i
-java:S1128"GRemove this unused import 'com.google.firebase.database.DatabaseError'.(ˆÔµıÿÿÿÿ8–›öÁ/
-u
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(œá÷òıÿÿÿÿ8æªòœ/
-¤
-java:S1186¬"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ8æªòœ/
-n
-java:S1128""LRemove this unused import 'com.google.firebase.database.ValueEventListener'.(‹ŞÜ‹ıÿÿÿÿ8–›öÁ/
-u
-java:S1450/"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àûÿÿÿÿ8€ú£›/
-s
-java:S3252˜"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(šÕÏÉúÿÿÿÿ8æªòœ/
-r
-java:S11046"UMake productos a static final constant or non-public and provide accessors if needed.(´Àï8¢˜óÁ/
-v
-java:S14509"TRemove the "salir" field and declare it as a local variable in the relevant methods.(Í¨Á»üÿÿÿÿ8ÏÎİ›/
-E
-java:S1604s"(Make this anonymous inner class a lambda(„ÑñŒ8‰ãÿÁ/
-L
-java:S16591"*Declare "verProductos" on a separate line.(½–İÆüÿÿÿÿ8ô‘¥•/
-M
-java:S1874â"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8æªòœ/
-V
-java:S1197Ì"8Move the array designator from the variable to the type.(Úù±Ï8æªòœ/
-[
-java:S1155½">Use isEmpty() to check whether the collection is empty or not.(‰©‡\8æªòœ/
-r
-java:S1192ª"TDefine a constant instead of duplicating this literal "Rellenar este Campo" 4 times.(ÆÒÓ8æªòœ/
-R
-java:S1874—"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8ô‘¥•/
-‘
-java:S13196"tThe type of the "productos" object should be an interface such as "List" rather than the implementation "ArrayList".(´Àï8¢˜óÁ/
-?
-java:S1643í"Use a StringBuilder instead.(©ôüËøÿÿÿÿ8ô‘¥•/
-D
-java:S1604O"(Make this anonymous inner class a lambda(ÁÒîd8¾Ü›/
-L
-java:S14446"/Make this "public static productos" field final(´Àï8¢˜óÁ/
-:
-java:S23866"Make this member "protected".(´Àï8¢˜óÁ/
-W
-java:S1874–"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî8æªòœ/
-U
-java:S1128"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ8–›öÁ/
+java:S2386:"Make this member "protected".(¼˜òû8Ş™ç»ƒ/
 t
-java:S1450:"RRemove the "uri" field and declare it as a local variable in the relevant methods.(¨ÁÉ¬ùÿÿÿÿ8ç’Ÿ›/
-c
-java:S1128"FRemove this unused import 'com.google.firebase.database.DataSnapshot'.(şÇŒ„8–›öÁ/
-F
-java:S1604£"(Make this anonymous inner class a lambda(óÔÃ˜8æªòœ/
-M
-java:S1874ÿ"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8æªòœ/
-F
-java:S1604ÿ"(Make this anonymous inner class a lambda(„ÑñŒ8æªòœ/
+java:S1450A"RRemove the "uri" field and declare it as a local variable in the relevant methods.(¨ÁÉ¬ùÿÿÿÿ8Ş™ç»ƒ/
+R
+java:S1128#"5Remove this unused import 'com.bumptech.glide.Glide'.(Ñˆ…Ë8Ş™ç»ƒ/
+s
+java:S3252"PUse static access with "android.view.ViewGroup$LayoutParams" for "WRAP_CONTENT".(šÕÏÉúÿÿÿÿ8Ş™ç»ƒ/
+K
+java:S1604«"(Make this anonymous inner class a lambda(É€òƒÿÿÿÿÿ8Ş™ç»ƒ/
+v
+java:S1104:"YMake listaImagenes a static final constant or non-public and provide accessors if needed.(¼˜òû8Ş™ç»ƒ/
+K
+java:S1604Ù"(Make this anonymous inner class a lambda(¿µôÚüÿÿÿÿ8Ş™ç»ƒ/
 J
-java:S1068/"(Remove this unused "user" private field.(š·àûÿÿÿÿ8€ú£›/
+java:S10685"(Remove this unused "user" private field.(š·àûÿÿÿÿ8Ş™ç»ƒ/
+E
+java:S1604z"(Make this anonymous inner class a lambda(„ÑñŒ8Şæå¼ƒ/
+F
+java:S1604 "(Make this anonymous inner class a lambda(Ò¹««8Ş™ç»ƒ/
+_
+java:S1128"BRemove this unused import 'androidx.navigation.ActivityNavigator'.(üÒŸ†8ıûÅ»ƒ/
+E
+java:S1604m"(Make this anonymous inner class a lambda(ÊÍñß8Ş™ç»ƒ/
+r
+java:S1192°"TDefine a constant instead of duplicating this literal "Rellenar este Campo" 4 times.(ÆÒÓ8Ş™ç»ƒ/
+¤
+java:S1186±"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š´ô«ÿÿÿÿÿ8Ş™ç»ƒ/
+u
+java:S3776‰"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(œá÷òıÿÿÿÿ8Ş™ç»ƒ/
+P
+java:S1444:"3Make this "public static listaImagenes" field final(¼˜òû8Ş™ç»ƒ/
+_
+java:S1128"BRemove this unused import 'android.view.animation.AnimationUtils'.(µ¬8¶Ø¯½ƒ/
+E
+java:S1604]"(Make this anonymous inner class a lambda(îê›8Ş™ç»ƒ/
+K
+java:S1604ë"(Make this anonymous inner class a lambda(·£…¢ıÿÿÿÿ8Ş™ç»ƒ/
+W
+java:S1874›"9Remove this use of "getDefaultDisplay"; it is deprecated.(ÉÖÓî8Æ³¿»ƒ/
+:
+java:S1643ò"Use a StringBuilder instead.(ë¤½†8Æ³¿»ƒ/
+L
+java:S1444<"/Make this "public static productos" field final(´Àï8Ş™ç»ƒ/
+u
+java:S14505"SRemove the "user" field and declare it as a local variable in the relevant methods.(š·àûÿÿÿÿ8Ş™ç»ƒ/
+‘
+java:S1319<"tThe type of the "productos" object should be an interface such as "List" rather than the implementation "ArrayList".(´Àï8Ş™ç»ƒ/
+F
+java:S1604¯"(Make this anonymous inner class a lambda(„¬İ™8Ş™ç»ƒ/
+F
+java:S1604è"(Make this anonymous inner class a lambda(„ÑñŒ8Ş™ç»ƒ/
+v
+java:S1450@"TRemove the "salir" field and declare it as a local variable in the relevant methods.(Í¨Á»üÿÿÿÿ8Æ³¿»ƒ/
+V
+java:S1197Ò"8Move the array designator from the variable to the type.(Úù±Ï8Ş™ç»ƒ/
+M
+java:S1874…"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8Ş™ç»ƒ/
+K
+java:S1604˜"(Make this anonymous inner class a lambda(½›Ü‰üÿÿÿÿ8Ş™ç»ƒ/
+Z
+java:S1128"=Remove this unused import 'android.view.animation.Animation'.(õò©²8¶Ø¯½ƒ/
+`
+java:S2259Á"BA "NullPointerException" could be thrown; "data" is nullable here.(ÇŸ÷8Ş™ç»ƒ/
+f
+java:S2583É"CChange this condition so that it does not always evaluate to "true"(±„‘‰ıÿÿÿÿ8Ş™ç»ƒ/
+D
+java:S1604V"(Make this anonymous inner class a lambda(ÁÒîd8Ş™ç»ƒ/
+?
+java:S1643ó"Use a StringBuilder instead.(©ôüËøÿÿÿÿ8Ş™ç»ƒ/
+[
+java:S1155Ã">Use isEmpty() to check whether the collection is empty or not.(‰©‡\8Ş™ç»ƒ/
+F
+java:S1604Ü"(Make this anonymous inner class a lambda(é¡¤é8Ş™ç»ƒ/
+F
+java:S1604…"(Make this anonymous inner class a lambda(„ÑñŒ8Ş™ç»ƒ/
+F
+java:S1604§"(Make this anonymous inner class a lambda(óÔÃ˜8Ş™ç»ƒ/
+r
+java:S1104<"UMake productos a static final constant or non-public and provide accessors if needed.(´Àï8Ş™ç»ƒ/
+h
+java:S1128"FRemove this unused import 'androidx.fragment.app.FragmentTransaction'.(¦İÚ¿şÿÿÿÿ8ËĞ½ƒ/
+Y
+java:S1128"7Remove this unused import 'android.transition.Explode'.(–´÷şÿÿÿÿ8ù¾ë»ƒ/
+N
+java:S1128	"1Remove this unused import 'android.app.Activity'.(‡ÊÍÆ8ıûÅ»ƒ/
+L
+java:S16597"*Declare "verProductos" on a separate line.(½–İÆüÿÿÿÿ8Ş™ç»ƒ/
+:
+java:S2386<"Make this member "protected".(´Àï8Ş™ç»ƒ/
+L
+java:S1874z"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8Ş™ç»ƒ/
+R
+java:S1874œ"/Remove this use of "getSize"; it is deprecated.(¯ÊÃÙøÿÿÿÿ8Ş™ç»ƒ/
+X	java:S1102"<This class has 9 parents which is greater than 5 authorized.(§ı¦Ù8Ş™ç»ƒ/
+y	java:S1169"XRename this field "CAPTURAR_FOTO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÕ«ğúÿÿÿÿ8Ş™ç»ƒ/
+M
+java:S1874è"/Remove this use of "Handler"; it is deprecated.(„ÑñŒ8Ş™ç»ƒ/
+~
+java:S14507"\Remove the "crearProducto" field and declare it as a local variable in the relevant methods.(½–İÆüÿÿÿÿ8Ş™ç»ƒ/
+P
+java:S1128"3Remove this unused import 'android.view.ViewGroup'.(‹îá8Ş™ç»ƒ/

@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.transition.TransitionInflater;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,8 +96,13 @@ public class AdminVerProductos extends DialogFragment implements RegistroListene
 
     }
 
-        @Override
-        public void onFinishRegistroDialog(String correo, String Clave) {
+    @Override
+    public void onFinishRegistroDialog(String correo, String clave) {
 
-        }
     }
+
+    @Override
+    public void onFinishQuestionDialog() {
+
+    }
+}

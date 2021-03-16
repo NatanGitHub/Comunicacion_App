@@ -136,4 +136,9 @@ public class Registro extends DialogFragment implements RegistroListener {
     public void onFinishRegistroDialog(String correo, String Clave) {
         
     }
+
+    @Override
+    public void onFinishQuestionDialog() {
+
+    }
 }

@@ -32,6 +32,8 @@ android {
 dependencies {
 
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    compile 'com.google.android.gms:play-services-location:9.4.0'
     compile 'com.ornach.nobobutton:nobobutton:1.6'
     implementation 'com.google.firebase:firebase-storage:19.2.1'
     compile 'com.txusballesteros:PasswordEditText:1.0.0'

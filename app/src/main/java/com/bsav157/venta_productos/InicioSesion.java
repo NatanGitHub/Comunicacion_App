@@ -13,6 +13,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.CellInfoGsm;
@@ -27,6 +32,8 @@ import android.widget.Toast;
 
 import com.bsav157.venta_productos.Interfaces.RegistroListener;
 import com.bsav157.venta_productos.fragmentos.Registro;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -36,6 +43,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.ornach.nobobutton.NoboButton;
 
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -115,6 +124,9 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
             @Override
             public void onClick(View view) {
 
+
+                direccion();
+
                 if(!extras.isOnline()){
                     Dialog verificarConexion = new Dialog(context);
                     verificarConexion.setContentView(R.layout.mensaje_sin_internet);
@@ -161,6 +173,7 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
                                         pantalla = new Intent(InicioSesion.this, Usuarios.class);
                                     }
                                     startActivity(pantalla);
+                                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                                     finish();
 
                                 } else {
@@ -175,6 +188,12 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
             }
 
         });
+
+    }
+
+    public void direccion(){
+
+
 
     }
 
@@ -206,6 +225,11 @@ public class InicioSesion extends AppCompatActivity implements RegistroListener 
                         proceso.dismiss();
                     }
                 });
+
+    }
+
+    @Override
+    public void onFinishQuestionDialog() {
 
     }
 
